@@ -5,7 +5,9 @@ const BaseLayout = () => {
   return (
     <main className="">
       <Header />
-      <div className="min-h-[60vh]">{Outlet}</div>
+      <div className="min-h-[100vh] lg:pt-48 lg:px-24">
+        <Outlet/>
+      </div>
       <Footer />
     </main>
   );
