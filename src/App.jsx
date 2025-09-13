@@ -9,7 +9,9 @@ import Services from "./pages/Services";
 import Career from "./pages/Career";
 import Happenings from "./pages/Happenings";
 import News from "./pages/News";
+import Events from "./pages/Events";
 import Contact from "./pages/Contact";
+import "./App.css"
 const App = () => {
   return (
     <>
@@ -23,6 +25,7 @@ const App = () => {
           <Route path="/career" element={<Career />} />
           <Route path="/happenings" element={<Happenings />} />
           <Route path="/news" element={<News />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>

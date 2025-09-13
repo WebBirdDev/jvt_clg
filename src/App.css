@@ -1,0 +1,17 @@
+.underline-animation::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Push it slightly below text */
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-out;
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
