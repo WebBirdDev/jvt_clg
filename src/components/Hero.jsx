@@ -40,7 +40,7 @@ const Hero = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        className="w-full h-[75%]"
+        className="w-full lg:h-[75%] h-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -69,7 +69,7 @@ const Hero = () => {
                 <motion.img
                   src={slide.img}
                   alt="Hero"
-                  className="max-w-[600px] h-auto"
+                  className="lg:max-w-[600px] max-w-[300px] h-auto"
                   animate={{
                     y: [0, -20, 0],
                   }}
