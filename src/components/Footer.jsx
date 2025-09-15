@@ -101,7 +101,7 @@ const Footer = () => {
   ];
   return (
     <footer className="min-w-full bottom-0">
-      <nav className="bg-ternary py-5 lg:px-32 px-5 flex justify-between">
+      <nav className="bg-ternary py-5 lg:px-32 px-5 flex lg:flex-row flex-col lg:justify-between justify-start gap-y-2">
         <p className="text-whitey font-bold flex gap-2 items-center lg:text-xl text-md">
           On Campus <TiWeatherPartlySunny className="lg:text-4xl text-2xl" />
         </p>

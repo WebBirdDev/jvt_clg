@@ -49,14 +49,14 @@ const Header = () => {
 
   return (
     <header
-      className={`rounded-b-3xl fixed min-w-full z-50 bg-white transition-all duration-500 ease-in-out
+      className={`rounded-b-3xl fixed top-0 min-w-full z-50 bg-white transition-all duration-500 ease-in-out
     transform ${
       scrolled
-        ? "drop-shadow-md backdrop-blur-2xl bg-transparent border-none"
+        ? "drop-shadow-md backdrop-blur-2xl border-none"
         : "drop-shadow-sm"
     } `}
     >
-      <div className="bg-primary lg:px-20 lg:py-5 py-2 px-10 text-whitey flex justify-between">
+      <div className="bg-primary lg:px-20 lg:py-5 py-2 px-10 text-whitey flex  flex-wrap lg:justify-between justify-center">
         <div className="flex items-center gap-5 relative ">
           {submenu.map(({ id, name, path }) => (
             <Link
@@ -134,11 +134,11 @@ const Header = () => {
           onClick={() => setMenuOpen(true)}
         />
         <div
-          className={`fixed lg:hidden top-0 right-0 h-full w-full max-w-full bg-overlay/60 z-50 transform transition-transform duration-500 ease-in-out ${
+          className={`fixed lg:hidden top-0 right-0 min-h-[100vh] w-full max-w-full bg-overlay/60 z-50 transform transition-transform duration-500 ease-in-out ${
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="w-3/4 h-full bg-overlay fixed right-0">
+          <div className="w-3/4 min-h-[100vh] bg-overlay transition-transform duration-700 fixed right-0">
             <div className="flex justify-end items-center p-5">
               <IoClose
                 className={`text-2xl cursor-pointer text-ternary font-semibold`}
