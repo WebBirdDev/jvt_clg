@@ -139,7 +139,7 @@ const Header = () => {
           }`}
         >
           <div className="w-3/4 min-h-[100vh] bg-overlay transition-transform duration-700 fixed right-0">
-            <div className="flex justify-end items-center p-5">
+            <div className="flex justify-end items-center p-5 px-10">
               <IoClose
                 className={`text-2xl cursor-pointer text-ternary font-semibold`}
                 onClick={() => setMenuOpen(false)}

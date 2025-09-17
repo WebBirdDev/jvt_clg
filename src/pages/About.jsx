@@ -5,7 +5,6 @@ import tag_1 from "../assets/about/tag_1.png";
 import tag_2 from "../assets/about/tag_2.png";
 import tag_3 from "../assets/about/tag_3.png";
 import clg from "../assets/about/about_clg.png";
-import chairman from "../assets/about/avatar_1.jpg";
 import { motion } from "framer-motion";
 import { mission, vision } from "../utils/content";
 import avatar from "../assets/about/avatar.jpg";
@@ -46,7 +45,15 @@ const About = () => {
   ];
   return (
     <main className="min-w-full">
-      <section className="transparent-hero rounded-md h-full lg:my-5 mt-32 mx-2 text-whitey">
+      <motion.section
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
+        className="transparent-hero rounded-md h-full lg:my-10 mt-32 mx-2 text-whitey"
+      >
         <div className="w-full h-full bg-cover bg-center box-container-transparent pt-5 px-5">
           <div className="flex lg:flex-row flex-col lg:justify-between justify-center items-center">
             <div className="lg:px-28 lg:text-left">
@@ -106,8 +113,16 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section className="w-full lg:px-20 px-5 py-10">
+      </motion.section>
+      <motion.section
+        initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+        }}
+        className="w-full lg:px-20 px-5 py-10"
+      >
         <h1 className="vertical-tag text-4xl text-overlay font-bold">
           Overview
         </h1>
@@ -143,20 +158,44 @@ const About = () => {
           </div>
           <img src={clg} className="lg:max-w-[90%] lg-pt-0 pt-10" />
         </div>
-      </section>
-      <section className="w-full lg:px-20 px-5 py-10">
+      </motion.section>
+      <motion.section
+        initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
+        className="w-full lg:px-20 px-5 py-10"
+      >
         <h1 className="vertical-tag text-4xl text-overlay font-bold">Vision</h1>
         <p className="text-blacky lg:text-lg lg:leading-loose my-5">{vision}</p>
-      </section>
-      <section className="w-full lg:px-20 px-5 py-10">
+      </motion.section>
+      <motion.section
+        initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
+        className="w-full lg:px-20 px-5 py-10"
+      >
         <h1 className="vertical-tag text-4xl text-overlay font-bold">
           Mission
         </h1>
         <p className="text-blacky lg:text-lg lg:leading-loose my-5">
           {mission}
         </p>
-      </section>
-      <section className="w-full lg:px-20 px-5 py-10 my-5">
+      </motion.section>
+      <motion.section
+        initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
+        className="w-full lg:px-20 px-5 py-10 my-5"
+      >
         <div className="bg-light-bg rounded-md w-full lg:px-10 p-3 lg:py-10 flex lg:flex-row flex-col-reverse gap-10">
           <div className=" w-full flex flex-col gap-5">
             <h1 className="vertical-tag w-full lg:text-4xl after:!bg-secondary after:!w-1 text-secondary font-bold">
@@ -181,8 +220,16 @@ const About = () => {
             className="max-w-[472px] chairman-img rounded-md"
           />
         </div>
-      </section>
-      <section className="w-full lg:px-20 px-5 py-10 my-5">
+      </motion.section>
+      <motion.section
+        initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
+        className="w-full lg:px-20 px-5 py-10 my-5"
+      >
         <div className=" bg-secondary-overlay rounded-md w-full lg:px-10 p-3 lg:py-10 flex flex-col lg:gap-0 gap-5">
           <h1 className="vertical-tag lg:text-4xl after:!w-1 text-overlay font-bold">
             Strategic Team
@@ -208,8 +255,13 @@ const About = () => {
             success.
           </p>
         </div>
-      </section>
-      <section className="w-full lg:px-20 px-5 py-10 my-5">
+      </motion.section>
+      <motion.section  initial={{ y: 200, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1.5,
+          ease: "easeInOut",
+        }} className="w-full lg:px-20 px-5 py-10 my-5">
         <h1 className="vertical-tag lg:text-4xl text-lg text-overlay font-bold">
           Academic Team Members
         </h1>
@@ -233,7 +285,7 @@ const About = () => {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 };

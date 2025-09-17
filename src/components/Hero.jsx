@@ -4,8 +4,8 @@ import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 
 import hero_img_1 from "../assets/hero_img.png";
-import hero_img_2 from "../assets/hero_img.png";
-import hero_img_3 from "../assets/hero_img.png";
+import hero_img_2 from "../assets/home/hero_img_2.png";
+import hero_img_3 from "../assets/home/hero_img_3.png";
 import Marquee from "./Marquee";
 const slides = [
   {
@@ -48,7 +48,8 @@ const Hero = () => {
               initial={{ y: 200, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className={`flex lg:flex-row flex-col-reverse h-full lg:px-20 px-5 py-10 lg:justify-between justify-center items-center`}
+              className={`flex flex-col-reverse lg:px-20 lg:py-5 py-10 lg:justify-between justify-center lg:items-center items-center 
+              ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}
             >
             {/* className={`flex flex-col-reverse lg:px-20 lg:py-5 py-10 lg:justify-between justify-center lg:items-center items-center 
               ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`} */}
@@ -69,7 +70,7 @@ const Hero = () => {
                 <motion.img
                   src={slide.img}
                   alt="Hero"
-                  className="lg:max-w-[600px] max-w-[300px] h-auto"
+                  className="lg:max-w-[700px] max-w-[300px] h-auto"
                   animate={{
                     y: [0, -20, 0],
                   }}
