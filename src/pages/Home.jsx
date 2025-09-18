@@ -16,6 +16,7 @@ import event_3 from "../assets/events/event_3.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 const Home = () => {
   const about_li = [
     { list: "Modern teaching methods" },
@@ -138,7 +139,9 @@ const Home = () => {
               </li>
             ))}
           </ul>
-          <button className="system-btn">My SRI JVT</button>
+          <button className="system-btn">
+            <Link to="/about">My SRI JVT</Link>
+          </button>
         </div>
       </motion.section>
       <motion.section
@@ -268,7 +271,9 @@ const Home = () => {
               </li>
             ))}
           </ul>
-          <button className="system-btn my-5">Explore the courses</button>
+          <button className="system-btn my-5">
+            <Link to="/academic">Explore the courses</Link>
+          </button>
         </div>
         <div className="w-full">
           <img src={academic} className="rounded-md" />
@@ -324,7 +329,7 @@ const Home = () => {
           {feature_services.map(({ heading, content }, i) => (
             <div
               key={i}
-              className="cursor-pointer w-80 h-96 bg-whitey transition-all duration-700 ease-in-out shadow-xl p-5 rounded-md m-auto overflow-hidden relative group z-0"
+              className="cursor-pointer lg:w-80 h-96 bg-whitey transition-all duration-700 ease-in-out shadow-xl p-5 rounded-md m-auto overflow-hidden relative group z-0"
             >
               <div className="circle absolute h-28 w-28 -bottom-[3.5em] -right-[2.5em] rounded-full bg-primary group-hover:scale-[2000%] duration-1000 z-[-1] op" />
               <h3 className="z-20 font-semibold text-[16px] py-10 group-hover:text-whitey">
@@ -334,7 +339,9 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <button className="system-btn my-5">Explore Our Services</button>
+        <button className="system-btn my-5">
+          <Link to="/services">Explore Our Services</Link>
+        </button>
       </motion.section>
       <motion.section
         initial={{ y: 200, opacity: 0 }}
@@ -427,7 +434,9 @@ const Home = () => {
               ))}
             </div>
 
-            <button className="system-btn my-10">Discover Our Stories</button>
+            <button className="system-btn my-10">
+              <Link to="/career">Discover Our Stories</Link>
+            </button>
           </div>
         </div>
       </motion.section>
@@ -475,7 +484,9 @@ const Home = () => {
               ))}
             </div>
 
-            <button className="system-btn my-10">Discover What Next</button>
+            <button className="system-btn my-10">
+              <Link to="/events">Discover What Next</Link>
+            </button>
           </div>
         </div>
       </motion.section>

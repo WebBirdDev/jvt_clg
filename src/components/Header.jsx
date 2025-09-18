@@ -76,15 +76,11 @@ const Header = () => {
         </div>
       </div>
       <div className="lg:px-20 px-10 lg:py-5 py-1 flex justify-between items-center text-primary">
-        <div className="flex items-center gap-3">
-          <Link to="/">
-            <img
-              src={logo}
-              className="lg:w-18 w-14 lg:rounded-2xl rounded-xl"
-            />
-          </Link>
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} className="lg:w-18 w-14 lg:rounded-2xl rounded-xl" />
+
           <h3 className="lg:text-md text-sm font-bold">SRI JVT College</h3>
-        </div>
+        </Link>
         <div className="items-center gap-10 text-base font-medium lg:flex hidden">
           {navlinks.map(({ id, name, path, submenu }) => {
             let active =

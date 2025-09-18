@@ -6,6 +6,7 @@ import twitter from "../assets/social_icons/twitter.png";
 import youtube from "../assets/social_icons/youtube.png";
 import logo from "../assets/logo_sm.jpeg";
 import { Link } from "react-router-dom";
+import Weather from "./Weather";
 
 const Footer = () => {
   const top_footer = [
@@ -102,9 +103,10 @@ const Footer = () => {
   return (
     <footer className="min-w-full bottom-0">
       <nav className="bg-ternary py-5 lg:px-32 px-5 flex lg:flex-row flex-col lg:justify-between justify-start gap-y-2">
-        <p className="text-whitey font-bold flex gap-2 items-center lg:text-xl text-md">
-          On Campus <TiWeatherPartlySunny className="lg:text-4xl text-2xl" />
-        </p>
+        <div className="text-whitey font-bold flex gap-2 items-center lg:text-xl text-md">
+          <p className="flex gap-2 items-center lg:text-xl text-md">On Campus <TiWeatherPartlySunny className="lg:text-4xl text-2xl" /></p>
+          <Weather/>
+        </div>
         <ul className="flex text-4xl items-center gap-3">
           {social_icons.map(({ id, icon, path }) => (
             <Link key={id} to={path}>

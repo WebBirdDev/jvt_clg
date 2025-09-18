@@ -9,8 +9,6 @@ import success_avatar_2 from "../assets/career/success_avatar_2.png";
 import success_avatar_3 from "../assets/career/success_avatar_3.png";
 import "../assets/css/circle.css";
 import { useState } from "react";
-import { IoIosArrowDropupCircle } from "react-icons/io";
-import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel, Navigation, Pagination } from "swiper/modules";
 const Career = () => {

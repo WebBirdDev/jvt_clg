@@ -7,6 +7,7 @@ import hero_img_1 from "../assets/hero_img.png";
 import hero_img_2 from "../assets/home/hero_img_2.png";
 import hero_img_3 from "../assets/home/hero_img_3.png";
 import Marquee from "./Marquee";
+import { Link } from "react-router-dom";
 const slides = [
   {
     title: "Shaping Futures, Building Leaders",
@@ -51,8 +52,6 @@ const Hero = () => {
               className={`flex flex-col-reverse lg:px-20 lg:py-5 py-10 lg:justify-between justify-center lg:items-center items-center 
               ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}
             >
-            {/* className={`flex flex-col-reverse lg:px-20 lg:py-5 py-10 lg:justify-between justify-center lg:items-center items-center 
-              ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`} */}
               {/* Text Section */}
               <div className="text-overlay flex flex-col gap-5 lg:items-start items-center">
                 <h1 className="font-medium lg:text-4xl text-xl lg:leading-14 lg:text-left text-center">
@@ -62,7 +61,9 @@ const Hero = () => {
                 <p className="lg:text-lg text-sm lg:w-[50%] w-full lg:text-left text-center">
                   {slide.desc}
                 </p>
-                <button className="system-btn">Explore our institute</button>
+                <button className="system-btn">
+                  <Link to="/about">Explore our institute</Link>
+                </button>
               </div>
 
               {/* Image Section */}
