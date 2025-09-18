@@ -25,9 +25,23 @@
 html {
   font-family: "Poppins", sans-serif;
   list-style: none;
+  user-select: none;
 }
 
 * {
   box-sizing: border-box;
   scroll-behavior: smooth !important;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  user-drag: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
 }
