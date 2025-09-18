@@ -9,6 +9,12 @@ import { Link } from "react-router-dom";
 import Weather from "./Weather";
 
 const Footer = () => {
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   const top_footer = [
     { id: 1, name: "Students", path: "/about" },
     { id: 2, name: "Faculty & Staffs", path: "/about" },
@@ -104,8 +110,10 @@ const Footer = () => {
     <footer className="min-w-full bottom-0">
       <nav className="bg-ternary py-5 lg:px-32 px-5 flex lg:flex-row flex-col lg:justify-between justify-start gap-y-2">
         <div className="text-whitey font-bold flex gap-2 items-center lg:text-xl text-md">
-          <p className="flex gap-2 items-center lg:text-xl text-md">On Campus <TiWeatherPartlySunny className="lg:text-4xl text-2xl" /></p>
-          <Weather/>
+          <p className="flex gap-2 items-center lg:text-xl text-md">
+            On Campus <TiWeatherPartlySunny className="lg:text-4xl text-2xl" />
+          </p>
+          <Weather />
         </div>
         <ul className="flex text-4xl items-center gap-3">
           {social_icons.map(({ id, icon, path }) => (
@@ -180,7 +188,9 @@ const Footer = () => {
             &copy; 2025 SRI JVT College - All rights reserved, Digital Solution
             By webbriid
           </span>
-          <span className="text-whitey/70">Website lastly updated on </span>
+          <span className="text-whitey/70">
+            Website lastly updated on {formattedDate}{" "}
+          </span>
         </div>
       </section>
     </footer>
