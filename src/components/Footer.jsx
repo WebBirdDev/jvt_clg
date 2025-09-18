@@ -15,7 +15,7 @@ const Footer = () => {
     { id: 3, name: "Gallery", path: "/events" },
   ];
   const header_items = [
-    { id: 1, name: "Home", path: "/home" },
+    { id: 1, name: "Home", path: "/" },
     { id: 2, name: "The Institute", path: "/about" },
     { id: 3, name: "Academic", path: "/academic" },
     { id: 4, name: "Services", path: "/services" },

@@ -208,15 +208,17 @@ const Home = () => {
         }}
         className="lg:px-44 px-10"
       >
-        <div className="flex lg:justify-between py-5 bg-primary items-center justify-start rounded-md px-10 gap-5">
-          <div>
-            <h1 className="text-secondary font-bold">Student Enrollement</h1>
-            <p className="text-whitey">Academic Year 2025/2026</p>
+        <Link to="/academic">
+          <div className="flex lg:justify-between py-5 bg-primary items-center justify-start rounded-md px-10 gap-5">
+            <div>
+              <h1 className="text-secondary font-bold">Student Enrollement</h1>
+              <p className="text-whitey">Academic Year 2025/2026</p>
+            </div>
+            <div>
+              <img src={arrow} />
+            </div>
           </div>
-          <div>
-            <img src={arrow} />
-          </div>
-        </div>
+        </Link>
       </motion.section>
       <motion.section
         initial={{ y: 200, opacity: 0 }}

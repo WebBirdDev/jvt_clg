@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import { success_stories } from "../utils/content";
+import { Link } from "react-router-dom";
 const Career = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const career_step = [
@@ -295,6 +296,11 @@ const Career = () => {
                 </Swiper>
               </div>
             </div>
+          </div>
+          <div className="flex w-full justify-center items-center">
+            <button className="system-btn">
+              <Link to="/happenings">See Our Students' Success</Link>
+            </button>
           </div>
         </div>
       </motion.section>

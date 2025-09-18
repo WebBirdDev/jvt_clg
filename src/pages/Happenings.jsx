@@ -23,12 +23,12 @@ const Happenings = () => {
           <div className="flex lg:flex-row flex-col-reverse lg:justify-between justify-center items-center">
             <div className="lg:px-28 lg:text-left text-center">
               <h1 className="font-bold lg:text-4xl text-xl leading-snug">
-                Experience <br />
-                Celebrate. Connect.
+                Real Journeys. <br />
+                True Growth. Bright Futures.
               </h1>
               <p className="lg:w-[85%] w-full py-5 lg:text-xl text-sm">
-                Discover upcoming programs, cultural celebrations, and special
-                gatherings that shape campus life.
+                Stories of perseverance, progress, and personal triumph from
+                students like you.
               </p>
             </div>
             <div className="w-full h-full relative overflow-hidden">
@@ -83,9 +83,18 @@ const Happenings = () => {
           Success Stories
         </h1>
 
-        <div className="py-20 flex items-center gap-10 justify-center flex-wrap">
+        <div className="py-20 flex items-center gap-20 justify-center flex-wrap">
           {success_stories.map(({ quote, author, img }, i) => (
-            <div key={i} className="success-card">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 1 + i * 0.5,
+                ease: "easeInOut",
+              }}
+              key={i}
+              className="success-card"
+            >
               <div className="content">
                 <img src={img} />
                 <p className="text-center text-sm">
@@ -93,7 +102,7 @@ const Happenings = () => {
                   {author}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.section>

@@ -1,4 +1,3 @@
-import React from "react";
 
 const Marquee = () => {
   const latest = Array.from({ length: 100 }, (_, i) => ({
@@ -6,7 +5,7 @@ const Marquee = () => {
     name: "New Batch Opening !",
   }));
   return (
-    <div className="marquee-wrapper backdrop-blur-sm ">
+    <div className="marquee-wrapper backdrop-blur-sm border-[1px] border-ternary">
       <div className="label">Announcements</div>
       <div className="marquee">
         <div className="marquee-content text-overlay">

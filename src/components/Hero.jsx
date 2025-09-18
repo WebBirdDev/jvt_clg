@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 
-import hero_img_1 from "../assets/hero_img.png";
+// import hero_img_1 from "../assets/hero_img.png";
+import hero_img_1 from "../assets/home/hero_img.png";
 import hero_img_2 from "../assets/home/hero_img_2.png";
 import hero_img_3 from "../assets/home/hero_img_3.png";
 import Marquee from "./Marquee";
