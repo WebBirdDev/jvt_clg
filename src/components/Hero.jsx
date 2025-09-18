@@ -74,7 +74,7 @@ const Hero = () => {
                   alt="Hero"
                   className="lg:max-w-[700px] max-w-[300px] h-auto"
                   animate={{
-                    y: [0, -20, 0],
+                    y: [0, -10, 0],
                   }}
                   transition={{
                     duration: 3,
