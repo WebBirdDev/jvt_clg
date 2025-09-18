@@ -384,7 +384,7 @@ const Home = () => {
               ))}
             </ul>
             <button className="system-btn my-5">
-              Start Your Career Journey
+              <Link to="/career">Start Your Career Journey</Link>
             </button>
           </div>
           <div className="w-full">
@@ -435,7 +435,7 @@ const Home = () => {
             </div>
 
             <button className="system-btn my-10">
-              <Link to="/career">Discover Our Stories</Link>
+              <Link to="/happenings">Discover Our Stories</Link>
             </button>
           </div>
         </div>
