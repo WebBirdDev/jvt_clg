@@ -85,7 +85,7 @@ const Header = () => {
           {navlinks.map(({ id, name, path, submenu }) => {
             let active =
               name === "Happenings" &&
-              (currentPath === "/news" || currentPath === "/events");
+              (currentPath === "/news" || currentPath === "/events" || currentPath === "/past_events");
             return (
               <div key={id} className="group relative">
                 <Link

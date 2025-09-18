@@ -14,6 +14,7 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [calendarViewDate, setCalendarViewDate] = useState(new Date());
@@ -262,10 +263,10 @@ const Events = () => {
           <h1 className="vertical-tag lg:text-4xl text-xl  text-overlay font-bold">
             Past Events
           </h1>
-          <p className="text-blacky font-light flex items-center gap-2">
+          <Link to="/past_events" className="text-blacky font-light flex items-center gap-2">
             See all{" "}
             <MdOutlineKeyboardDoubleArrowRight className="text-xl font-light" />
-          </p>
+          </Link>
         </div>
         <div className="flex lg:flex-row flex-col items-center py-10 gap-5">
           {past_events.map(({ name, img, content, date, location }, i) => (

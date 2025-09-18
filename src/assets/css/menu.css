@@ -1,0 +1,10 @@
+.menu {
+    --menu-active-fg: var(--color-neutral-content);
+    --menu-active-bg: var(--color-neutral);
+    flex-flow: column wrap;
+    width: fit-content;
+    padding: .5rem;
+    font-size: .875rem;
+    display: flex
+;
+}

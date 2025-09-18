@@ -10,9 +10,9 @@ import Weather from "./Weather";
 
 const Footer = () => {
   const top_footer = [
-    { id: 1, name: "Students", path: "/students" },
-    { id: 2, name: "Faculty & Staffs", path: "/faculty" },
-    { id: 3, name: "Gallery", path: "/gallery" },
+    { id: 1, name: "Students", path: "/about" },
+    { id: 2, name: "Faculty & Staffs", path: "/about" },
+    { id: 3, name: "Gallery", path: "/events" },
   ];
   const header_items = [
     { id: 1, name: "Home", path: "/home" },
