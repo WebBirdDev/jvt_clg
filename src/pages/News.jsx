@@ -8,27 +8,9 @@ import news_1 from "../assets/news/news_1.png";
 import news_2 from "../assets/news/news_2.png";
 import news_3 from "../assets/news/news_3.png";
 import { IoCalendarClearOutline } from "react-icons/io5";
+import { exclusive_news } from "../utils/content";
+import { Link } from "react-router-dom";
 const News = () => {
-  const exclusive_news = [
-    {
-      name: "New IT Lab Opened",
-      content: "State-of-the-art facilities to enhance digital learning.",
-      date: "September  1st, 2025",
-      img: news_1,
-    },
-    {
-      name: "Student Wins National Award",
-      content: "Recognized for innovation in vocational training.",
-      date: "May 5, 2025",
-      img: news_2,
-    },
-    {
-      name: "Partnership with Industry Leaders",
-      content: "Opening doors for internships and global exposure.",
-      date: "April 20, 2025",
-      img: news_3,
-    },
-  ];
   return (
     <main className="min-w-full">
       <motion.section
@@ -126,8 +108,9 @@ const News = () => {
         </h1>
         <div className="lg:px-44">
           <div className="flex lg:flex-row flex-col items-center py-10 gap-5">
-            {exclusive_news.map(({ name, img, content, date }, i) => (
-              <div
+            {exclusive_news.map(({ name, img, content, date, id }, i) => (
+              <Link
+                to={`./${id}`}
                 key={i}
                 className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
               >
@@ -147,7 +130,7 @@ const News = () => {
                     {date}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

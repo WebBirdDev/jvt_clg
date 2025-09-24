@@ -15,52 +15,48 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { past_events, upcoming_events } from "../utils/content";
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [calendarViewDate, setCalendarViewDate] = useState(new Date());
-  const upcoming_events = [
-    {
-      name: "Annual Cultural Fest 2025",
-      content:
-        "Connect with industry experts and unlock pathways to your dream career",
-      date: "September 21, 2025",
-      location: "SRI JVT College Auditorium",
-      img: event_1,
-    },
-    {
-      name: "Tech Expo 2025",
-      content: "A Expo for Aritificial Intelligence and Robotics",
-      date: "September 25, 2025",
-      location: "SRI JVT College Auditorium",
-      img: event_1,
-    },
-    {
-      name: "Graduation & Awards Ceremony",
-      content:
-        "Connect with industry experts and unlock pathways to your dream career",
-      date: "November 5, 2025",
-      location: "Jaffna District Conference Center",
-      img: event_2,
-    },
-    {
-      name: "Career Guidance & Internship Fair",
-      content:
-        "Connect with industry experts and unlock pathways to your dream career",
-      date: "December 20, 2025",
-      location: "Main Hall, SRI JVT College",
-      img: event_3,
-    },
-  ];
-  const past_events = [
-    {
-      name: "Job Fair 2024",
-      content:
-        "Connect with industry experts and unlock pathways to your dream career",
-      date: "May 21, 2024",
-      location: "SRI JVT College Auditorium",
-      img: event_3,
-    },
-  ];
+  // const upcoming_events = [
+  //   {
+  //     name: "Annual Cultural Fest 2025",
+  //     content:
+  //       "Connect with industry experts and unlock pathways to your dream career",
+  //     content_2: "",
+  //     date: "September 21, 2025",
+  //     location: "SRI JVT College Auditorium",
+  //     img: event_1,
+  //   },
+  //   {
+  //     name: "Tech Expo 2025",
+  //     content: "A Expo for Aritificial Intelligence and Robotics",
+  //     content_2: "",
+  //     date: "September 25, 2025",
+  //     location: "SRI JVT College Auditorium",
+  //     img: event_1,
+  //   },
+  //   {
+  //     name: "Graduation & Awards Ceremony",
+  //     content:
+  //       "Connect with industry experts and unlock pathways to your dream career",
+  //     content_2: "",
+  //     date: "November 5, 2025",
+  //     location: "Jaffna District Conference Center",
+  //     img: event_2,
+  //   },
+  //   {
+  //     name: "Career Guidance & Internship Fair",
+  //     content:
+  //       "Connect with industry experts and unlock pathways to your dream career",
+  //     content_2: "",
+  //     date: "December 20, 2025",
+  //     location: "Main Hall, SRI JVT College",
+  //     img: event_3,
+  //   },
+  // ];
+
   const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
@@ -227,11 +223,12 @@ const Events = () => {
               {(selectedDate ? selectedDateEvents : currentMonthEvents).length >
               0 ? (
                 (selectedDate ? selectedDateEvents : currentMonthEvents).map(
-                  ({ name, date }, i) => {
+                  ({ name, date, id }, i) => {
                     const eventDate = new Date(date);
                     const day = eventDate.getDate();
                     return (
-                      <div
+                      <Link
+                        to={`./${id}`}
                         key={i}
                         className="bg-light-bg px-3 py-4 rounded-md flex items-center gap-3"
                       >
@@ -239,7 +236,7 @@ const Events = () => {
                           {day}
                         </div>
                         <p className="text-overlay font-medium">{name}</p>
-                      </div>
+                      </Link>
                     );
                   }
                 )
@@ -263,28 +260,33 @@ const Events = () => {
           <h1 className="vertical-tag lg:text-4xl text-xl  text-overlay font-bold">
             Past Events
           </h1>
-          <Link to="/past_events" className="text-blacky font-light flex items-center gap-2">
+          <Link
+            to="/past_events"
+            className="text-blacky font-light flex items-center gap-2"
+          >
             See all{" "}
             <MdOutlineKeyboardDoubleArrowRight className="text-xl font-light" />
           </Link>
         </div>
         <div className="flex lg:flex-row flex-col items-center py-10 gap-5">
-          {past_events.map(({ name, img, content, date, location }, i) => (
-            <div
+          {past_events.map(({ id, name, img, content, date, location }, i) => (
+            <Link
+              to={`/past_events/${id}`}
               key={i}
               className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
             >
+            <div className="bg-primary/50 group-hover:bg-primary/20 z-20 absolute group-hover:scale-[105%] duration-1000 w-[358px] h-[240px]"></div>
               <img
                 src={img}
                 className="group-hover:scale-[105%] duration-1000"
               />
-              <p className="px-5 absolute text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
+              <p className="px-5 absolute z-30 text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
                 {name}
               </p>
               <p className="mt-3 text-black-two text-sm font-light">
                 {content}
               </p>
-              <div className="flex w-ful lg:justify-between gap-y-2 lg:flex-row flex-col mb-5 mt-5">
+              <div className="flex w-ful lg:justify-between flex-wrap gap-y-2 lg:flex-row flex-col mb-5 mt-5">
                 <p className="flex gap-1 text-xs text-blacky font-light">
                   <IoCalendarClearOutline className="text-overlay" />
                   {date}
@@ -294,7 +296,7 @@ const Events = () => {
                   {location}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </motion.section>

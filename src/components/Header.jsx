@@ -10,7 +10,6 @@ const Header = () => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -85,7 +84,10 @@ const Header = () => {
           {navlinks.map(({ id, name, path, submenu }) => {
             let active =
               name === "Happenings" &&
-              (currentPath === "/news" || currentPath === "/events" || currentPath === "/past_events");
+              (currentPath === "/news" ||
+                currentPath === "/events" ||
+                currentPath.startsWith("/past_events") ||
+                currentPath.startsWith("/news"));
             return (
               <div key={id} className="group relative">
                 <Link

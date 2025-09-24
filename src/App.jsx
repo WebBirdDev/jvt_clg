@@ -16,6 +16,9 @@ import PastEvents from "./pages/PastEvents";
 import Sitemap from "./pages/Sitemap";
 import TermsConditions from "./pages/TermsConditions";
 import Privacy from "./pages/Privacy";
+import PastSingleEvent from "./components/PastSingleEvent";
+import SingleEvent from "./components/SingleEvent";
+import SingleNews from "./components/SingleNews";
 const App = () => {
   return (
     <>
@@ -29,9 +32,12 @@ const App = () => {
           <Route path="/career" element={<Career />} />
           <Route path="/happenings" element={<Happenings />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/:id" element={<SingleNews />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<SingleEvent />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/past_events" element={<PastEvents />} />
+          <Route path="/past_events/:id" element={<PastSingleEvent />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/sitemap" element={<Sitemap />} />
