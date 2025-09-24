@@ -2,7 +2,7 @@ import success_avatar_1 from "../assets/career/success_avatar_1.png";
 import success_avatar_2 from "../assets/career/success_avatar_2.png";
 import success_avatar_3 from "../assets/career/success_avatar_3.png";
 import past_event_1 from "../assets/events/past_event_1.jpg";
-import past_event_2 from "../assets/events/musical_show.jpg";
+// import past_event_2 from "../assets/events/musical_show.jpg";
 import past_event_3 from "../assets/events/past_event_3.jpg";
 import upcoming_event_1 from "../assets/events/tech-expo.jpeg";
 import upcoming_event_2 from "../assets/events/graduation.jpeg";
@@ -67,18 +67,18 @@ export const past_events = [
     location: "SRI JVT College Auditorium",
     img: past_event_1,
   },
-  {
-    id: "ghr565465",
-    name: "Inter-college Competition 2024",
-    content:
-      "Connect with industry experts and unlock pathways to your dream career",
-    content_2:
-      "Inter-college Competition 2024 was a high-energy event that brought together students from different institutions to compete across a wide range of categories including sports, performing arts, literary events, and technical challenges. The competition was designed to foster healthy rivalry, encourage cross-college networking, and give students a chance to demonstrate their abilities in a dynamic and supportive environment. From intense quiz battles and coding marathons to electrifying dance performances and thought-provoking debates, every event was judged by industry professionals and academic experts. Participants gained valuable exposure, built confidence, and left with unforgettable experiences. The event emphasized teamwork, innovation, and perseverance, leaving a lasting impact on all attendees.",
-    date: "Febraury 10, 2024",
-    time: "10:30 am",
-    location: "SRI JVT College Auditorium",
-    img: past_event_2,
-  },
+  // {
+  //   id: "ghr565465",
+  //   name: "Inter-college Competition 2024",
+  //   content:
+  //     "Connect with industry experts and unlock pathways to your dream career",
+  //   content_2:
+  //     "Inter-college Competition 2024 was a high-energy event that brought together students from different institutions to compete across a wide range of categories including sports, performing arts, literary events, and technical challenges. The competition was designed to foster healthy rivalry, encourage cross-college networking, and give students a chance to demonstrate their abilities in a dynamic and supportive environment. From intense quiz battles and coding marathons to electrifying dance performances and thought-provoking debates, every event was judged by industry professionals and academic experts. Participants gained valuable exposure, built confidence, and left with unforgettable experiences. The event emphasized teamwork, innovation, and perseverance, leaving a lasting impact on all attendees.",
+  //   date: "Febraury 10, 2024",
+  //   time: "10:30 am",
+  //   location: "SRI JVT College Auditorium",
+  //   img: past_event_2,
+  // },
   {
     id: "ertre3453",
     name: "Job Fair 2024",

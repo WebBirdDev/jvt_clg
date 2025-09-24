@@ -269,35 +269,37 @@ const Events = () => {
           </Link>
         </div>
         <div className="flex lg:flex-row flex-col items-center py-10 gap-5">
-          {past_events.map(({ id, name, img, content, date, location }, i) => (
-            <Link
-              to={`/past_events/${id}`}
-              key={i}
-              className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
-            >
-            <div className="bg-primary/50 group-hover:bg-primary/20 z-20 absolute group-hover:scale-[105%] duration-1000 w-[358px] h-[240px]"></div>
-              <img
-                src={img}
-                className="group-hover:scale-[105%] duration-1000"
-              />
-              <p className="px-5 absolute z-30 text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
-                {name}
-              </p>
-              <p className="mt-3 text-black-two text-sm font-light">
-                {content}
-              </p>
-              <div className="flex w-ful lg:justify-between flex-wrap gap-y-2 lg:flex-row flex-col mb-5 mt-5">
-                <p className="flex gap-1 text-xs text-blacky font-light">
-                  <IoCalendarClearOutline className="text-overlay" />
-                  {date}
+          {past_events
+            .slice(0, 3)
+            .map(({ id, name, img, content, date, location }, i) => (
+              <Link
+                to={`/past_events/${id}`}
+                key={i}
+                className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
+              >
+                <div className="bg-primary/50 group-hover:bg-primary/20 z-20 absolute group-hover:scale-[105%] duration-1000 w-[358px] h-[240px]"></div>
+                <img
+                  src={img}
+                  className="group-hover:scale-[105%] duration-1000"
+                />
+                <p className="px-5 absolute z-30 text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
+                  {name}
                 </p>
-                <p className="flex gap-1 text-xs text-blacky font-light">
-                  <FaLocationDot className="text-overlay" />
-                  {location}
+                <p className="mt-3 text-black-two text-sm font-light">
+                  {content}
                 </p>
-              </div>
-            </Link>
-          ))}
+                <div className="flex w-ful lg:justify-between flex-wrap gap-y-2 lg:flex-row flex-col mb-5 mt-5">
+                  <p className="flex gap-1 text-xs text-blacky font-light">
+                    <IoCalendarClearOutline className="text-overlay" />
+                    {date}
+                  </p>
+                  <p className="flex gap-1 text-xs text-blacky font-light">
+                    <FaLocationDot className="text-overlay" />
+                    {location}
+                  </p>
+                </div>
+              </Link>
+            ))}
         </div>
       </motion.section>
     </main>
