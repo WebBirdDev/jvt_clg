@@ -22,7 +22,14 @@ app.use(
   express.static(path.join(__dirname, "uploads/success_story"))
 );
 
+// add routes you defined
+app.use("/api/v1/users", require("./routes/userRoutes"));
+app.use("/api/v1/userlog", require("./routes/userLogRoutes"));
+
+// handling errors here
 app.use(errorHandler);
+
+// connect db then start server
 connect_db()
   .then(() => {
     app.listen(port, () => {
