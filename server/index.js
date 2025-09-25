@@ -5,7 +5,7 @@ const port = process.env.PORT;
 const path = require("path");
 const connect_db = require("./config/dbConnect");
 const { errorHandler } = require("./middleware/errorMiddleware");
-
+const cors = require("cors");
 app.get("/", (req, res) => res.send("Hello world"));
 
 app.use(express.json({ limit: "20mb" }));
@@ -21,7 +21,7 @@ app.use(
   "/uploads/success_story",
   express.static(path.join(__dirname, "uploads/success_story"))
 );
-
+app.use(cors());
 // add routes you defined
 app.use("/api/v1/users", require("./routes/userRoutes"));
 app.use("/api/v1/userlog", require("./routes/userLogRoutes"));

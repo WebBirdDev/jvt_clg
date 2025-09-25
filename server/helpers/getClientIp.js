@@ -4,4 +4,4 @@ function getClientIp(req) {
   return ip === "::1" ? "127.0.0.1" : ip;
 }
 
-export default getClientIp;
+module.exports = getClientIp;

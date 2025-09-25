@@ -1,6 +1,5 @@
-import React from "react";
 import ScrollToTop from "./components/ScrollToTop";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import BaseLayout from "./layout/BaseLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -19,7 +18,12 @@ import Privacy from "./pages/Privacy";
 import PastSingleEvent from "./components/PastSingleEvent";
 import SingleEvent from "./components/SingleEvent";
 import SingleNews from "./components/SingleNews";
+import useAuth from "./context/useAuth";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AdminLayout from "./layout/AdminLayout";
+import Login from "./pages/admin/Login";
 const App = () => {
+  const { isAuthenticated } = useAuth();
   return (
     <>
       <ScrollToTop />
@@ -41,6 +45,17 @@ const App = () => {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/sitemap" element={<Sitemap />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+        <Route
+          path="/login"
+          element={isAuthenticated ? <Navigate to="/admin" /> : <Login />}
+        />
+        <Route element={<ProtectedRoute />}>
+          <Route path="admin" element={<AdminLayout />} />
+          {/* <Route path="users" element={<Users />} />
+          <Route path="logs" element={<UserLogs />} />
+          <Route path="*" element={<AdminHome />} /> */}
         </Route>
       </Routes>
     </>
