@@ -50,7 +50,9 @@ const Breadcrumbs = () => {
   }, [id, location.pathname]);
 
   let subPathLink = "/";
-  if (subPath === "Past Events" || subPath === "Upcoming Events") {
+  if (subPath === "Past Events") {
+    subPathLink = "/past_events";
+  } else if (subPath === "Upcoming Events") {
     subPathLink = "/events";
   } else if (subPath === "Exclusive News") {
     subPathLink = "/news";
@@ -59,23 +61,25 @@ const Breadcrumbs = () => {
   }
 
   return (
-    <div className="bg-nav py-3 xl:px-20 px-5">
-      <h4 className="flex items-center text-sm">
-        <NavLink to="/" className="text-breadcrumb tracking-widest">
-          Sri JVT
+    <div className="bg-nav lg:py-3 pt-44 xl:px-20 px-5 ">
+      <h4 className="flex lg:flex-row flex-col lg:items-center lg:text-base text-xs w-full">
+        <NavLink to="/" className="text-breadcrumb lg:tracking-widest transition-color  duration-300 border-b-2 border-white hover:text-purple-500 hover:border-purple-500">
+          Sri&nbsp;JVT
         </NavLink>
         {subPath && (
-          <>
+          <div className="flex items-center group">
             <MdOutlineKeyboardArrowRight />
             <NavLink
               to={subPathLink}
-              className="text-breadcrumb tracking-wide px-1"
+              className="text-breadcrumb lg:tracking-wide lg:px-1 transition-color  duration-300 border-b-2 border-white group-hover:text-purple-500 group-hover:border-purple-500"
             >
               {subPath}
             </NavLink>
-          </>
+          </div>
         )}
-        <MdOutlineKeyboardArrowRight /> {currentPath}
+        <div className="flex items-center">
+          <MdOutlineKeyboardArrowRight /> {currentPath}
+        </div>
       </h4>
     </div>
   );

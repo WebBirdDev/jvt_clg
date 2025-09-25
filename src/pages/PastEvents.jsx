@@ -17,6 +17,7 @@ const PastEvents = () => {
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{
+          delay: 0.2,
           duration: 1.5,
           ease: "easeInOut",
         }}
@@ -94,15 +95,15 @@ const PastEvents = () => {
             >
               <img
                 src={img}
-                className="group-hover:scale-[105%] duration-1000"
+                className="group-hover:scale-[105%] duration-1000 brightness-50 group-hover:brightness-100"
               />
-              <p className="px-5 absolute text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
+              <p className="px-5 absolute text-whitey lg:text-base text-xs -mt-10 mb-5 group-hover:scale-95 duration-1000 group-hover:backdrop-blur-xl">
                 {name}
               </p>
               <p className="mt-3 text-black-two text-sm font-light">
                 {content}
               </p>
-              <div className="flex w-ful lg:justify-between gap-y-2 lg:flex-row flex-col mb-5 mt-5">
+              <div className="flex w-ful lg:justify-between gap-y-2 lg:flex-row flex-col flex-wrap mb-5 mt-5">
                 <p className="flex gap-1 text-xs text-blacky font-light">
                   <IoCalendarClearOutline className="text-overlay" />
                   {date}

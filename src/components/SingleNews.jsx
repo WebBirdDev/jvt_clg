@@ -28,23 +28,23 @@ const SingleNews = () => {
           {news.name}
         </h1>
         <div className="w-full flex flex-col gap-5 py-10">
-          <div className="bg-light-bg lg:w-[80%] flex rounded-xl">
+          <div className="bg-light-bg lg:w-[80%] flex lg:flex-row flex-col rounded-xl">
             <img src={news.img} className=" lg:w-[70%] rounded-l-xl" />
             <div className="py-20 px-5 flex flex-col gap-10">
               <div className="flex gap-6">
                 <IoCalendarClearOutline className="text-4xl text-purple-500" />
                 <div>
                   <p className="font-semibold text-purple-500">Date</p>
-                  <span className="text-blacky"> {news.date}</span>
+                  <span className="text-blacky lg:text-base text-xs"> {news.date}</span>
                 </div>
               </div>{" "}
             </div>
           </div>
           <div className="flex flex-col gap-5 mt-10 items-start text-blacky">
-            <h1 className="vertical-tag lg:text-xl text-xl  text-overlay font-bold">
+            <h1 className="vertical-tag  text-xl  text-overlay font-bold">
               Details
             </h1>
-            <p className="lg:w-[60%]">{news.content_2}</p>
+            <p className="lg:w-[60%] w-full lg:text-base text-xs ">{news.content_2}</p>
           </div>
         </div>
       </motion.section>

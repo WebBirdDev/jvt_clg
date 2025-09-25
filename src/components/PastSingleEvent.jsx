@@ -32,8 +32,8 @@ const PastSingleEvent = () => {
           {event.name}
         </h1>
         <div className="w-full flex flex-col gap-5 py-10">
-          <div className="bg-light-bg lg:w-[80%] flex rounded-xl">
-            <img src={event.img} className=" lg:w-[70%] rounded-l-xl" />
+          <div className="bg-light-bg lg:w-[80%] flex lg:flex-row flex-col lg:rounded-xl lg:rounded-t-none rounded-t-xl">
+            <img src={event.img} className=" lg:w-[70%] lg:rounded-l-xl lg:rounded-t-none rounded-t-xl" />
             <div className="py-20 px-5 flex flex-col gap-10">
               <div className="flex gap-6">
                 <IoCalendarClearOutline className="text-4xl text-purple-500" />
@@ -62,7 +62,7 @@ const PastSingleEvent = () => {
             <h1 className="vertical-tag lg:text-xl text-xl  text-overlay font-bold">
               Details
             </h1>
-            <p className="lg:w-[60%]">{event.content_2}</p>
+            <p className="lg:w-[60%] w-full lg:text-base text-xs">{event.content_2}</p>
           </div>
         </div>
       </motion.section>

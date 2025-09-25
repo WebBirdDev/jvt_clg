@@ -72,32 +72,7 @@ const Home = () => {
     { name: "Rising Stars", img: story_2 },
     { name: "Real Success", img: story_3 },
   ];
-  // const events = [
-  //   {
-  //     name: "Annual Cultural Fest 2025",
-  //     content:
-  //       "Connect with industry experts and unlock pathways to your dream career",
-  //     date: "October 12, 2025",
-  //     location: "SRI JVT College Auditorium",
-  //     img: event_1,
-  //   },
-  //   {
-  //     name: "Graduation & Awards Ceremony",
-  //     content:
-  //       "Connect with industry experts and unlock pathways to your dream career",
-  //     date: "November 5, 2025",
-  //     location: "Jaffna District Conference Center",
-  //     img: event_2,
-  //   },
-  //   {
-  //     name: "Career Guidance & Internship Fair",
-  //     content:
-  //       "Connect with industry experts and unlock pathways to your dream career",
-  //     date: "December 20, 2025",
-  //     location: "Main Hall, SRI JVT College",
-  //     img: event_3,
-  //   },
-  // ];
+
   return (
     <main className="min-w-full">
       <section className="bg-light-bg rounded-md h-full lg:my-5 mt-32 mx-2">
@@ -465,19 +440,18 @@ const Home = () => {
                     key={i}
                     className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
                   >
-                    <div className="bg-primary/60 group-hover:bg-primary/20 z-20 absolute group-hover:scale-[105%] duration-1000 w-[358px] h-[200px]"></div>
-
+                    
                     <img
                       src={img}
-                      className="group-hover:scale-[105%] duration-1000"
+                      className="group-hover:scale-[105%] duration-1000 brightness-50 group-hover:brightness-100"
                     />
-                    <p className="px-5 z-30 absolute text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
+                    <p className="px-5 z-30 absolute text-whitey -mt-10 mb-5 group-hover:scale-95 duration-1000 group-hover:backdrop-blur-xl">
                       {name}
                     </p>
                     <p className="mt-3 text-black-two text-sm font-light">
                       {content}
                     </p>
-                    <div className="flex w-ful lg:justify-between gap-y-2 lg:flex-row flex-col mb-5 mt-5">
+                    <div className="flex w-ful lg:justify-between gap-y-2 lg:flex-row flex-col flex-wrap mb-5 mt-5">
                       <p className="flex gap-1 text-xs text-blacky font-light">
                         <IoCalendarClearOutline className="text-overlay" />
                         {date}

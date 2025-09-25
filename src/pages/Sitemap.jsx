@@ -26,7 +26,7 @@ const Sitemap = () => {
   return (
     <motion.main
       initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{
         duration: 1.5,
         ease: "easeInOut",

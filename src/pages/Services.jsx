@@ -96,7 +96,7 @@ const Services = () => {
     <main className="min-w-full">
       <motion.section
         initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
           duration: 1.5,
           ease: "easeInOut",
@@ -158,7 +158,7 @@ const Services = () => {
       </motion.section>
       <motion.section
         initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
           duration: 1.5,
           ease: "easeInOut",

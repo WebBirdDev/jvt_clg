@@ -19,44 +19,6 @@ import { past_events, upcoming_events } from "../utils/content";
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [calendarViewDate, setCalendarViewDate] = useState(new Date());
-  // const upcoming_events = [
-  //   {
-  //     name: "Annual Cultural Fest 2025",
-  //     content:
-  //       "Connect with industry experts and unlock pathways to your dream career",
-  //     content_2: "",
-  //     date: "September 21, 2025",
-  //     location: "SRI JVT College Auditorium",
-  //     img: event_1,
-  //   },
-  //   {
-  //     name: "Tech Expo 2025",
-  //     content: "A Expo for Aritificial Intelligence and Robotics",
-  //     content_2: "",
-  //     date: "September 25, 2025",
-  //     location: "SRI JVT College Auditorium",
-  //     img: event_1,
-  //   },
-  //   {
-  //     name: "Graduation & Awards Ceremony",
-  //     content:
-  //       "Connect with industry experts and unlock pathways to your dream career",
-  //     content_2: "",
-  //     date: "November 5, 2025",
-  //     location: "Jaffna District Conference Center",
-  //     img: event_2,
-  //   },
-  //   {
-  //     name: "Career Guidance & Internship Fair",
-  //     content:
-  //       "Connect with industry experts and unlock pathways to your dream career",
-  //     content_2: "",
-  //     date: "December 20, 2025",
-  //     location: "Main Hall, SRI JVT College",
-  //     img: event_3,
-  //   },
-  // ];
-
   const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
@@ -82,10 +44,11 @@ const Events = () => {
 
   return (
     <main className="min-w-full">
-      <motion.section
+      <motion.section layout
         initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
+          delay: 0.2,
           duration: 1.5,
           ease: "easeInOut",
         }}
@@ -144,8 +107,9 @@ const Events = () => {
       </motion.section>
       <motion.section
         initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
+          delay:0.4,
           duration: 1.5,
           ease: "easeInOut",
         }}
@@ -277,12 +241,11 @@ const Events = () => {
                 key={i}
                 className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
               >
-                <div className="bg-primary/50 group-hover:bg-primary/20 z-20 absolute group-hover:scale-[105%] duration-1000 w-[358px] h-[240px]"></div>
                 <img
                   src={img}
-                  className="group-hover:scale-[105%] duration-1000"
+                  className="group-hover:scale-[105%] duration-1000 brightness-50 group-hover:brightness-100"
                 />
-                <p className="px-5 absolute z-30 text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
+                <p className="px-5 absolute lg:text-base text-xs z-30 text-whitey -mt-10 mb-5 group-hover:scale-95 duration-1000 group-hover:backdrop-blur-xl">
                   {name}
                 </p>
                 <p className="mt-3 text-black-two text-sm font-light">

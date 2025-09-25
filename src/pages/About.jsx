@@ -43,11 +43,13 @@ const About = () => {
       img: avatar,
     },
   ];
+
   return (
     <main className="min-w-full">
       <motion.section
         initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{
           duration: 1.5,
           ease: "easeInOut",
@@ -70,9 +72,11 @@ const About = () => {
               <div className="flex flex-col justify-end items-end relative">
                 <img src={about_hero} className="z-10" />
                 <motion.img
+                  layout
                   animate={{ y: [0, -60, 0] }}
                   transition={{
-                    duration: 5,
+                    delay: 0.2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
@@ -256,12 +260,15 @@ const About = () => {
           </p>
         </div>
       </motion.section>
-      <motion.section  initial={{ y: 200, opacity: 0 }}
+      <motion.section
+        initial={{ y: 200, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{
           duration: 1.5,
           ease: "easeInOut",
-        }} className="w-full lg:px-20 px-5 py-10 my-5">
+        }}
+        className="w-full lg:px-20 px-5 py-10 my-5"
+      >
         <h1 className="vertical-tag lg:text-4xl text-lg text-overlay font-bold">
           Academic Team Members
         </h1>

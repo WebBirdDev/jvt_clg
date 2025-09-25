@@ -14,9 +14,12 @@ const News = () => {
   return (
     <main className="min-w-full">
       <motion.section
+        layout
         initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{
+          delay: 0.2,
           duration: 1.5,
           ease: "easeInOut",
         }}
