@@ -45,3 +45,8 @@ img {
 
   -webkit-touch-callout: none;
 }
+
+
+input{
+  outline: none !important;
+}

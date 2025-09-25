@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         task: `User ${user.name} logout`,
       };
       const response = await postRequest(
-        `${baseurl}/user-logs`,
+        `${baseurl}/userlog`,
         JSON.stringify(payload)
       );
 

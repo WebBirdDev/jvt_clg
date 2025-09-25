@@ -22,6 +22,14 @@ import useAuth from "./context/useAuth";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminLayout from "./layout/AdminLayout";
 import Login from "./pages/admin/Login";
+import AdminHome from "./pages/admin/AdminHome";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminUserlogs from "./pages/admin/AdminUserlogs";
+import AdminNews from "./pages/admin/AdminNews";
+import AdminEvents from "./pages/admin/AdminEvents";
+import Profile from "./pages/admin/AdminProfile";
+import CreateEvent from "./components/admin/events/CreateEvent";
+import UpdateEvent from "./components/admin/events/UpdateEvent";
 const App = () => {
   const { isAuthenticated } = useAuth();
   return (
@@ -52,10 +60,17 @@ const App = () => {
           element={isAuthenticated ? <Navigate to="/admin" /> : <Login />}
         />
         <Route element={<ProtectedRoute />}>
-          <Route path="admin" element={<AdminLayout />} />
-          {/* <Route path="users" element={<Users />} />
-          <Route path="logs" element={<UserLogs />} />
-          <Route path="*" element={<AdminHome />} /> */}
+          <Route path="admin" element={<AdminLayout />}>
+            <Route index element={<AdminHome />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="logs" element={<AdminUserlogs />} />
+            <Route path="news" element={<AdminNews />} />
+            <Route path="events" element={<AdminEvents />} />
+            <Route path="events/create" element={<CreateEvent />} />
+            <Route path="events/update" element={<UpdateEvent />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="*" element={<AdminHome />} />
+          </Route>
         </Route>
       </Routes>
     </>

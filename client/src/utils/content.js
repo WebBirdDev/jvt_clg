@@ -172,3 +172,83 @@ export const exclusive_news = [
     img: news_3,
   },
 ];
+
+export const events = [
+  {
+    id: "rgrty5464",
+    name: "Annual Cultural Fest 2025",
+    content:
+      "Connect with industry experts and unlock pathways to your dream career",
+    content_2:
+      "The Annual Cultural Fest 2025, scheduled for September 21, 2025, at the SRI JVT College Auditorium, is a celebration of culture, creativity, and campus spirit. This event brings together students, faculty, and local talent in a vibrant display of music, dance, drama, and traditional art forms. It serves as a platform for students to express their cultural identities and showcase their talents in front of a large audience. The fest not only fosters creativity and team spirit but also enhances social bonds across various departments. Visitors can enjoy live performances, food stalls, exhibitions, and interactive games. It's a day to unwind, connect, and celebrate diversity in an inclusive environment. The event aims to build community spirit, promote cultural appreciation, and provide a memorable experience that strengthens the student body. Don’t miss this opportunity to be part of one of the most anticipated and colorful events of the year.",
+    date: "September 21, 2025",
+    location: "SRI JVT College Auditorium",
+    img: upcoming_event_3,
+    time: "3:00 pm",
+    status:'active'
+  },
+  {
+    id: "rtety46645",
+    name: "Tech Expo 2025",
+    content: "A Expo for Aritificial Intelligence and Robotics",
+    content_2:
+      "Tech Expo 2025, happening on September 25, 2025, at the SRI JVT College Auditorium, is a forward-looking event dedicated to emerging technologies in Artificial Intelligence and Robotics. The expo will feature interactive booths, live demonstrations, tech talks, and exhibitions from innovators, startups, and student-led projects. Attendees will gain insights into cutting-edge developments, including smart automation, machine learning applications, robotics in healthcare, and AI-powered systems transforming industries. The event is designed to inspire students and provide them with real-world exposure to current and future trends in technology. Whether you're a tech enthusiast, a budding developer, or simply curious about the future, this event offers something for everyone. It also provides networking opportunities with professionals and potential collaborators, helping students build connections in the tech space. Tech Expo 2025 aims to spark innovation, promote hands-on learning, and ignite the curiosity of the next generation of engineers, developers, and problem-solvers.",
+    date: "September 25, 2025",
+    location: "SRI JVT College Auditorium",
+    img: upcoming_event_1,
+    time: "9:00 am",
+    status:'active'
+  },
+  {
+    id: "jukl54654",
+    name: "Graduation & Awards Ceremony",
+    content:
+      "Honoring the accomplishments of our graduates and recognizing excellence in academics, leadership, and service.",
+    content_2:
+      "The Graduation & Awards Ceremony, taking place on November 5, 2025, at the Jaffna District Conference Center, is a prestigious event that marks the culmination of years of dedication and academic excellence. This formal ceremony honors graduating students as they receive their degrees and are recognized for their achievements in academics, leadership, and community involvement. The event brings together students, families, faculty, and dignitaries in a day of celebration and reflection. Highlights include inspiring speeches from notable alumni and invited guests, special performances, and the awarding of medals, certificates, and honors. It’s not just a celebration of academic success but also a milestone that symbolizes new beginnings and future possibilities. For many, this day represents the transition from student life into the professional world. The ceremony is designed to be both uplifting and memorable, providing graduates with a well-deserved sense of accomplishment and a vision for the journey ahead.",
+    date: "November 5, 2025",
+    location: "Jaffna District Conference Center",
+    img: upcoming_event_2,
+    time: "11:00 am",
+    status:'active'
+  },
+  {
+    id: "asdw34546",
+    name: "Career Guidance & Internship Fair",
+    content:
+      "Connect with industry experts and unlock pathways to your dream career",
+    content_2:
+      "Scheduled for December 20, 2025, at the Main Hall of SRI JVT College, the Career Guidance & Internship Fair is a vital event for students seeking to navigate their professional paths. This event brings together industry leaders, HR professionals, and recruiters from various sectors who are eager to connect with talented and ambitious students. Attendees can explore internship opportunities, attend career counseling sessions, and participate in workshops designed to enhance employability skills like resume writing, interview techniques, and personal branding. It’s an excellent chance for students to ask questions, gain industry insights, and get a clearer understanding of the expectations and trends in the job market. In addition, panel discussions and guest talks provide deeper guidance on career planning and future-ready skills. Whether you're looking for an internship, a mentor, or inspiration for your next steps, this fair is designed to empower you with the tools, knowledge, and connections you need.",
+    date: "December 20, 2025",
+    location: "Main Hall, SRI JVT College",
+    img: past_event_1,
+    time: "10:00 am",
+    status:'active'
+  },
+  {
+    id: "rghrhgj2342",
+    name: "Annual Culturals 2024",
+    content:
+      "Connect with industry experts and unlock pathways to your dream career",
+    content_2:
+      "The Annual Culturals 2024 was a vibrant celebration of creativity, talent, and unity. This much-awaited event brought together students from various departments to showcase their skills in music, dance, drama, art, and fashion. The college auditorium was transformed into a hub of energy, with lively performances, colorful decorations, and enthusiastic crowds. The event also featured inter-college competitions, cultural exhibitions, and food stalls that added to the festive spirit. It served as a perfect platform for students to break academic monotony, collaborate across disciplines, and express themselves artistically. The event concluded with an awards ceremony recognizing outstanding talent and team spirit.",
+    date: "January 15, 2024",
+    time: "8:00 am",
+    location: "SRI JVT College Auditorium",
+    img: past_event_1,
+    status:'active'
+  },
+  {
+    id: "ertre3453",
+    name: "Job Fair 2024",
+    content:
+      "Connect with industry experts and unlock pathways to your dream career",
+    content_2:
+      "The Job Fair 2024 provided an invaluable opportunity for students and recent graduates to engage directly with top employers across multiple sectors. Attendees were able to explore job openings and internships in fields such as technology, healthcare, education, finance, and more. The fair featured company booths, resume reviews, and live interview sessions, helping students understand industry expectations and hiring trends. Several workshops were held on topics like personal branding, interview techniques, and professional communication. Students also benefited from networking lounges and expert mentorship corners. The event's collaborative environment empowered participants to take charge of their career goals with greater clarity and preparation.",
+    date: "April 30, 2024",
+    time: "9:00 am",
+    location: "Computer Science Lecturing Hall, University Permises",
+    img: past_event_3,
+    status:'disabled'
+  },
+];

@@ -1,9 +1,18 @@
-import React from 'react'
+import { Link } from "react-router-dom";
+import useAuth from "../../context/useAuth";
 
 const AdminHeader = () => {
+  const { user, logoutUser } = useAuth();
   return (
-    <div>AdminHeader</div>
-  )
-}
+    <header className="bg-whitey min-w-full text-sm py-5 px-10 flex justify-end items-center rounded-t-md">
+      <div className="flex gap-5 items-center">
+        <Link to="/admin/profile" className="">
+          Hi, {user.name}
+        </Link>
+        <button onClick={logoutUser} className="bg-[#8963f7] text-whitey rounded-md cursor-pointer px-3 py-2">Logout</button>
+      </div>
+    </header>
+  );
+};
 
-export default AdminHeader
+export default AdminHeader;
