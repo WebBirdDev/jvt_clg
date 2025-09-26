@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Event = require("../models/eventModel");
 const getClientIp = require("../helpers/getClientIp");
-
+const userLog = require("../models/userLogModel");
 const createEvent = asyncHandler(async (req, res) => {
   if (!req.file) {
     res.status(400);
