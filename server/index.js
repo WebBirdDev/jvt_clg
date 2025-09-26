@@ -25,7 +25,7 @@ app.use(cors());
 // add routes you defined
 app.use("/api/v1/users", require("./routes/userRoutes"));
 app.use("/api/v1/userlog", require("./routes/userLogRoutes"));
-
+app.use("/api/v1/events", require("./routes/EventRoutes"));
 // handling errors here
 app.use(errorHandler);
 

@@ -1,19 +1,45 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { events } from "../../utils/content";
 import { GoDotFill } from "react-icons/go";
 import { TbEdit } from "react-icons/tb";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { getRequest, baseurl } from "../../utils/service";
+import { formatDate, formatTimeTo12Hour } from "../../utils/dateFormatting";
+import UpdateStatus from "../../components/admin/events/UpdateStatus";
 const AdminEvents = () => {
   const [eventsDetails, setEventDetails] = useState([]);
   const [search, setSearch] = useState("");
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openStatusModal, setOpenStatusModal] = useState(false);
+  const [selectedEventId, setSelectedEventId] = useState("");
+  const getAllEvents = async () => {
+    try {
+      const response = await getRequest(`${baseurl}/events`);
+      if (response.error) {
+        console.log(response.error);
+        return;
+      }
+      setEventDetails(response.events);
+    } catch (error) {
+      console.error("error in fetching events details", error);
+    }
+  };
   useEffect(() => {
-    setEventDetails(events);
+    getAllEvents();
   }, []);
   const filteredEvents = eventsDetails.filter((event) => {
     const query = search.toLowerCase();
     return event.name.toLowerCase().includes(query);
   });
+  const handleStatusUpdate = () => {
+    setOpenStatusModal(false);
+    getAllEvents();
+  };
+
+  const handleDeleteModal = () => {
+    setOpenDeleteModal(false);
+    getAllEvents();
+  };
   return (
     <main className="py-20 px-5">
       <div className="flex items-center justify-between w-full">
@@ -64,7 +90,7 @@ const AdminEvents = () => {
             {filteredEvents.length > 0 ? (
               filteredEvents.map((event, i) => (
                 <tr
-                  key={event.id}
+                  key={event._id}
                   className="hover:bg-ternary/40 border-b-1 border-black-two/10 hover:text-purple-900 cursor-pointer"
                 >
                   <td className="px-4 py-3">{i + 1}</td>
@@ -74,9 +100,15 @@ const AdminEvents = () => {
                   >
                     {event.name}
                   </th>
-                  <td className="px-4 py-3">{event.date} </td>
-                  <td className="px-4 py-3">{event.time} </td>
+                  <td className="px-4 py-3">{formatDate(event.event_date)} </td>
+                  <td className="px-4 py-3">
+                    {formatTimeTo12Hour(event.event_time)}{" "}
+                  </td>
                   <td
+                    onClick={() => {
+                      setOpenStatusModal(true);
+                      setSelectedEventId(event._id);
+                    }}
                     className={`mx-4 my-3 flex items-center gap-1 ${
                       event.status === "active"
                         ? "bg-green-300/50 text-green-600"
@@ -85,17 +117,25 @@ const AdminEvents = () => {
                         : ""
                     } w-fit pl-2 pr-4 py-1 rounded-full`}
                   >
-                    {" "}
                     <GoDotFill />
-                    {event.status}{" "}
+                    {event.status}
                   </td>
                   <td className="px-4 py-3 ">
                     <div className="flex gap-5">
-                      <button className="flex items-center gap-2 bg-yellow-300 px-3 py-1 text-black/50 hover:bg-yellow-500 transition-colors duration-300 ease-in cursor-pointer rounded-md">
+                      <Link
+                        to={`/admin/events/update/${event._id}`}
+                        className="flex items-center gap-2 bg-yellow-300 px-3 py-1 text-black/50 hover:bg-yellow-500 transition-colors duration-300 ease-in cursor-pointer rounded-md"
+                      >
                         <TbEdit />
                         Edit
-                      </button>
-                      <button className="flex items-center gap-2 bg-red-500 px-3 py-1 text-whitey hover:bg-red-700 transition-colors duration-300 ease-in cursor-pointer rounded-md">
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setOpenDeleteModal(true);
+                          setSelectedEventId(event._id);
+                        }}
+                        className="flex items-center gap-2 bg-red-500 px-3 py-1 text-whitey hover:bg-red-700 transition-colors duration-300 ease-in cursor-pointer rounded-md"
+                      >
                         <MdOutlineDeleteOutline />
                         Delete
                       </button>
@@ -113,6 +153,13 @@ const AdminEvents = () => {
           </tbody>
         </table>
       </div>
+     {openStatusModal && (
+       <UpdateStatus isOpen={openStatusModal} onClose={handleStatusUpdate} event_id={selectedEventId} />
+     )}
+
+     {/* {openDeleteModal && (
+      
+     )} */}
     </main>
   );
 };

@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../context/useAuth";
 import { getRequest, baseurl, updateRequest } from "../../../utils/service";
+import { toast } from "react-toastify";
 
-const UpdateStatus = ({ isOpen, onClose, userId }) => {
+const UpdateStatus = ({ isOpen, onClose, event_id }) => {
   const { user } = useAuth();
 
-  const [userData, setUserData] = useState({
-    username: "",
+  const [eventData, setEventData] = useState({
+    name: "",
     status: "",
   });
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await getRequest(`${baseurl}/users/${userId}`);
+        const response = await getRequest(`${baseurl}/events/${event_id}`);
         if (response.error) {
           console.error("Error in response", response);
           return;
         }
-        setUserData({
-          username: response.username,
+        setEventData({
+          name: response.name,
           status: response.status,
         });
       } catch (error) {
@@ -26,21 +27,21 @@ const UpdateStatus = ({ isOpen, onClose, userId }) => {
       }
     };
 
-    if (userId) {
+    if (event_id) {
       fetchUsers();
     }
-  }, [userId]);
+  }, [event_id]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const payload = {
-        ...userData,
-        loggedusername: user?.name || "unknown",
-        task: `User ${userData.username} is ${userData.status}`,
+        ...eventData,
+        username: user?.name || "unknown",
+        task: `User ${eventData.name} is ${eventData.status}`,
       };
       console.log(payload);
       const response = await updateRequest(
-        `${baseurl}/users/${userId}`,
+        `${baseurl}/events/${event_id}`,
         JSON.stringify(payload)
       );
       if (response.error) {
@@ -48,8 +49,9 @@ const UpdateStatus = ({ isOpen, onClose, userId }) => {
         return;
       }
       onClose();
+      toast(`Event ${eventData.name} ${eventData.status}`);
     } catch (error) {
-      console.error("Error in updating career data", error);
+      console.error("Error in updating event data", error);
     }
   };
   if (!isOpen) return null;
@@ -63,7 +65,7 @@ const UpdateStatus = ({ isOpen, onClose, userId }) => {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-600 pb-4 mb-4">
           <h3 className="text-base font-semibold text-gray-900 dark:text-white">
-            Update User {userData.username} status
+            Update Event <br /> {eventData.name} status
           </h3>
           <button
             type="button"
@@ -99,9 +101,9 @@ const UpdateStatus = ({ isOpen, onClose, userId }) => {
                   type="radio"
                   name="status"
                   value="active"
-                  checked={userData.status === "active"}
+                  checked={eventData.status === "active"}
                   onChange={() =>
-                    setUserData((prevData) => ({
+                    setEventData((prevData) => ({
                       ...prevData,
                       status: "active",
                     }))
@@ -116,9 +118,9 @@ const UpdateStatus = ({ isOpen, onClose, userId }) => {
                   type="radio"
                   name="status"
                   value="disabled"
-                  checked={userData.status === "disabled"}
+                  checked={eventData.status === "disabled"}
                   onChange={() =>
-                    setUserData((prevData) => ({
+                    setEventData((prevData) => ({
                       ...prevData,
                       status: "disabled",
                     }))
@@ -144,7 +146,7 @@ const UpdateStatus = ({ isOpen, onClose, userId }) => {
             </button>
           </div>
           <span className="text-xs text-red-400 font-medium">
-            Note: only active users can login
+            Note: only active events are listed to public
           </span>
         </form>
       </div>

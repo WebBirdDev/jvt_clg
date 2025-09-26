@@ -30,6 +30,7 @@ import AdminEvents from "./pages/admin/AdminEvents";
 import Profile from "./pages/admin/AdminProfile";
 import CreateEvent from "./components/admin/events/CreateEvent";
 import UpdateEvent from "./components/admin/events/UpdateEvent";
+import { ToastContainer } from "react-toastify";
 const App = () => {
   const { isAuthenticated } = useAuth();
   return (
@@ -67,12 +68,25 @@ const App = () => {
             <Route path="news" element={<AdminNews />} />
             <Route path="events" element={<AdminEvents />} />
             <Route path="events/create" element={<CreateEvent />} />
-            <Route path="events/update" element={<UpdateEvent />} />
+            <Route path="events/update/:id" element={<UpdateEvent />} />
             <Route path="profile" element={<Profile />} />
             <Route path="*" element={<AdminHome />} />
           </Route>
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        // transition={Bounce}
+      />
     </>
   );
 };
