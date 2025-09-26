@@ -55,7 +55,7 @@ const CreateEvent = () => {
     if (response.error) {
       console.log(response.message);
     } else {
-      toast(response.message);
+      toast('Event Created successfully');
       setEventData({
         name: "",
         description: "",
