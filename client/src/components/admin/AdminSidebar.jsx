@@ -41,6 +41,12 @@ export const AdminSidebar = () => {
       icon: <HiOutlineUsers className="text-xl" />,
       active_icon: <HiMiniUsers className="text-xl" />,
     },
+    {
+      name: "Profile",
+      path: "/admin/profile",
+      icon: <RiUser3Line className="text-xl" />,
+      active_icon: <RiUser3Fill className="text-xl" />,
+    },
     ...(user?.role === "super_admin"
       ? [
           {
@@ -51,12 +57,6 @@ export const AdminSidebar = () => {
           },
         ]
       : []),
-    {
-      name: "Profile",
-      path: "/admin/profile",
-      icon: <RiUser3Line className="text-xl" />,
-      active_icon: <RiUser3Fill className="text-xl" />,
-    },
   ];
 
   return (
