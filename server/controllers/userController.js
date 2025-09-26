@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
-const { EMAIL, PASSWORD } = require("../env.js");
+const { EMAIL, PASSWORD } = require("../env.template");
 const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const getClientIp = require("../helpers/getClientIp");
