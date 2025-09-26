@@ -19,7 +19,7 @@ export const AdminSidebar = () => {
   const navlinks = [
     {
       name: "Home",
-      path: "/admin/",
+      path: "/admin",
       icon: <IoHomeOutline className="text-xl" />,
       active_icon: <IoHome className="text-xl" />,
     },
