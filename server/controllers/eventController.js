@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Event = require("../models/eventModel");
 const getClientIp = require("../helpers/getClientIp");
-const userLog = require("../models/userLogModel");
 
 const createEvent = asyncHandler(async (req, res) => {
   if (!req.file) {
@@ -58,6 +57,7 @@ const getSingleEvent = asyncHandler(async (req, res) => {
   }
   res.status(200).json(event);
 });
+
 const updateEvent = asyncHandler(async (req, res) => {
   const eventId = req.params.id;
   const event = await Event.findById(eventId);
@@ -89,9 +89,30 @@ const updateEvent = asyncHandler(async (req, res) => {
     userlog,
   });
 });
+
+const deleteEvent = asyncHandler(async (req, res) => {
+  const eventId = req.params.id;
+  const event = await Event.findById(eventId);
+  if (!event) {
+    res.status(400);
+    throw new Error("Event not found");
+  }
+  await Event.deleteOne({ _id: eventId });
+  const ipaddress = getClientIp(req);
+  const userlog = await UserLog.create({
+    username: req.body.username || "unknown",
+    task: req.body.task || "unknown",
+    ipaddress: ipaddress,
+  });
+  res.status(200).json({
+    message: `event ${req.params.id} deleted`,
+    userlog,
+  });
+});
 module.exports = {
   createEvent,
   getAllEvents,
   getSingleEvent,
   updateEvent,
+  deleteEvent,
 };

@@ -6,6 +6,7 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 import { getRequest, baseurl } from "../../utils/service";
 import { formatDate, formatTimeTo12Hour } from "../../utils/dateFormatting";
 import UpdateStatus from "../../components/admin/events/UpdateStatus";
+import DeleteEvent from "../../components/admin/events/DeleteEvent";
 const AdminEvents = () => {
   const [eventsDetails, setEventDetails] = useState([]);
   const [search, setSearch] = useState("");
@@ -157,9 +158,9 @@ const AdminEvents = () => {
        <UpdateStatus isOpen={openStatusModal} onClose={handleStatusUpdate} event_id={selectedEventId} />
      )}
 
-     {/* {openDeleteModal && (
-      
-     )} */}
+     {openDeleteModal && (
+      <DeleteEvent isOpen={openDeleteModal} onClose={handleDeleteModal} event_id={selectedEventId}/>
+     )}
     </main>
   );
 };

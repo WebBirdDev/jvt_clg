@@ -9,6 +9,7 @@ const {
   getAllEvents,
   getSingleEvent,
   updateEvent,
+  deleteEvent,
 } = require("../controllers/eventController");
 
 const storage = multer.diskStorage({
@@ -45,5 +46,9 @@ const upload = multer({
 });
 
 router.route("/").post(upload.single("img"), createEvent).get(getAllEvents);
-router.route("/:id").get(getSingleEvent).put(upload.single("img"), updateEvent);
+router
+  .route("/:id")
+  .get(getSingleEvent)
+  .put(upload.single("img"), updateEvent)
+  .delete(deleteEvent);
 module.exports = router;
