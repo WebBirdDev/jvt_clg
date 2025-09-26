@@ -60,7 +60,7 @@ export const AdminSidebar = () => {
   ];
 
   return (
-    <aside className="fixed min-h-[100vh] w-16 sm:w-64 px-2 pt-20 sm:px-5 text-whitey bg-[#8963f7] transition-all duration-300">
+    <aside className="fixed min-h-[100vh] w-16 sm:w-64 px-2 pt-20 sm:px-5 text-whitey bg-admin transition-all duration-300">
       <Link to="/admin" className=" ">
         <img src={logo} className="w-16 rounded-md" />
       </Link>

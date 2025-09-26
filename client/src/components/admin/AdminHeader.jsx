@@ -9,7 +9,7 @@ const AdminHeader = () => {
         <Link to="/admin/profile" className="">
           Hi, {user.name}
         </Link>
-        <button onClick={logoutUser} className="bg-[#8963f7] text-whitey rounded-md cursor-pointer px-3 py-2">Logout</button>
+        <button onClick={logoutUser} className="bg-admin text-whitey rounded-md cursor-pointer px-3 py-2">Logout</button>
       </div>
     </header>
   );

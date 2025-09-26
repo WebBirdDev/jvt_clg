@@ -176,7 +176,7 @@ const AdminUserlogs = () => {
 
           <div className="overflow-x-auto mt-5 bg-white px-5 py-5 w-full">
             <table className="w-full text-sm text-left bg-ternary/20 shadow-md shadow-[#8863f73d] rounded-md">
-              <thead className="text-xs text-whitey uppercase bg-[#8963f7] shadow-xl rounded-t-md">
+              <thead className="text-xs text-whitey uppercase bg-admin shadow-xl rounded-t-md">
                 <tr>
                   <th className="px-6 py-3">#</th>
                   <th className="px-6 py-3">User</th>

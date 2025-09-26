@@ -74,14 +74,14 @@ const AdminUsers = () => {
               className=" outline-none border-2 py-2 px-3 border-ternary rounded-md"
             />
           </div>
-          <button onClick={()=>setOpenCreateModal(true)} className="cursor-pointer text-whitey bg-[#8963f7] px-5 py-3 rounded-xl">
+          <button onClick={()=>setOpenCreateModal(true)} className="cursor-pointer text-whitey bg-admin px-5 py-3 rounded-xl">
             Create user
           </button>
         </div>
       </div>
       <div className="overflow-x-auto mt-5 bg-white px-5 py-5 w-full">
         <table className="w-full text-sm text-left  bg-ternary/20 shadow-md shadow-[#8863f73d] rounded-md">
-          <thead className="text-xs text-whitey uppercase bg-[#8963f7] shadow-xl rounded-t-md dark:bg-purple-700 dark:text-gray-400">
+          <thead className="text-xs text-whitey uppercase bg-admin shadow-xl rounded-t-md dark:bg-purple-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-4 py-3">
                 #
