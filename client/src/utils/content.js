@@ -47,9 +47,72 @@ export const success_stories = [
   },
   {
     quote:
-      "The training and counseling I received at SRI JVT College opened doors for me to study abroad. Today, I am completing my master’s degree while working part-time in the UK, a dream that became possible because of the guidance I received.",
-    author: "Priya, Faculty of Vocational & Professional Studies",
+      "Choosing SRI JVT College was the turning point of my life. With personalized mentorship and practical training, I was able to land a job in digital marketing even before graduation.",
+    author: "Kavin, Faculty of Business & Management",
+    img: success_avatar_1,
+    active: false,
+  },
+  {
+    quote:
+      "Thanks to the hands-on lab sessions and industry-linked curriculum at SRI JVT College, I now work as a junior software developer at a top tech startup in Bangalore.",
+    author: "Meena, Faculty of IT & Computing",
+    img: success_avatar_2,
+    active: false,
+  },
+  {
+    quote:
+      "From resume-building workshops to mock interviews, the career center at SRI JVT College helped me secure a job in the hospitality sector in Dubai right after completing my diploma.",
+    author: "Rahul, Faculty of Vocational & Professional Studies",
     img: success_avatar_3,
+    active: false,
+  },
+  {
+    quote:
+      "I joined SRI JVT College with little direction, but the supportive faculty and internship opportunities helped me discover my path. Today, I run my own e-commerce business.",
+    author: "Divya, Faculty of Business & Management",
+    img: success_avatar_1,
+    active: false,
+  },
+  {
+    quote:
+      "The real-world projects and coding bootcamps at SRI JVT gave me the confidence to freelance as a web developer while still studying. I now have clients across three countries.",
+    author: "Arun, Faculty of IT & Computing",
+    img: success_avatar_2,
+    active: false,
+  },
+  {
+    quote:
+      "The soft skills training at SRI JVT College was a game-changer. I used to be shy, but now I confidently lead a customer support team in a multinational company.",
+    author: "Nisha, Faculty of Vocational & Professional Studies",
+    img: success_avatar_3,
+    active: false,
+  },
+  {
+    quote:
+      "At SRI JVT College, I was encouraged to participate in business pitch competitions. That experience sparked my entrepreneurial spirit, and today I run a successful startup.",
+    author: "Yogesh, Faculty of Business & Management",
+    img: success_avatar_1,
+    active: false,
+  },
+  {
+    quote:
+      "The IT faculty at SRI JVT were not only experts in their field but also incredible mentors. Their support helped me win a national coding competition and get noticed by recruiters.",
+    author: "Sneha, Faculty of IT & Computing",
+    img: success_avatar_2,
+    active: false,
+  },
+  {
+    quote:
+      "Studying culinary arts at SRI JVT College gave me both the skills and confidence to work in a five-star hotel kitchen in Malaysia. The international exposure was invaluable.",
+    author: "Sundar, Faculty of Vocational & Professional Studies",
+    img: success_avatar_3,
+    active: false,
+  },
+  {
+    quote:
+      "My time at SRI JVT was full of growth — academically and personally. I built a strong network, learned from industry leaders, and now work as a project coordinator in a reputed firm.",
+    author: "Anjali, Faculty of Business & Management",
+    img: success_avatar_1,
     active: false,
   },
 ];
@@ -185,7 +248,7 @@ export const events = [
     location: "SRI JVT College Auditorium",
     img: upcoming_event_3,
     time: "3:00 pm",
-    status:'active'
+    status: "active",
   },
   {
     id: "rtety46645",
@@ -197,7 +260,7 @@ export const events = [
     location: "SRI JVT College Auditorium",
     img: upcoming_event_1,
     time: "9:00 am",
-    status:'active'
+    status: "active",
   },
   {
     id: "jukl54654",
@@ -210,7 +273,7 @@ export const events = [
     location: "Jaffna District Conference Center",
     img: upcoming_event_2,
     time: "11:00 am",
-    status:'active'
+    status: "active",
   },
   {
     id: "asdw34546",
@@ -223,7 +286,7 @@ export const events = [
     location: "Main Hall, SRI JVT College",
     img: past_event_1,
     time: "10:00 am",
-    status:'active'
+    status: "active",
   },
   {
     id: "rghrhgj2342",
@@ -236,7 +299,7 @@ export const events = [
     time: "8:00 am",
     location: "SRI JVT College Auditorium",
     img: past_event_1,
-    status:'active'
+    status: "active",
   },
   {
     id: "ertre3453",
@@ -249,6 +312,6 @@ export const events = [
     time: "9:00 am",
     location: "Computer Science Lecturing Hall, University Permises",
     img: past_event_3,
-    status:'disabled'
+    status: "disabled",
   },
 ];

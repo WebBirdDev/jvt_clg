@@ -3,22 +3,22 @@ import useAuth from "../../../context/useAuth";
 import { getRequest, baseurl, updateRequest } from "../../../utils/service";
 import { toast } from "react-toastify";
 
-const UpdateStatus = ({ isOpen, onClose, event_id }) => {
+const UpdateStatus = ({ isOpen, onClose, story_id }) => {
   const { user } = useAuth();
 
-  const [eventData, setEventData] = useState({
+  const [storyData, setstoryData] = useState({
     name: "",
     status: "",
   });
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchStory = async () => {
       try {
-        const response = await getRequest(`${baseurl}/events/${event_id}`);
+        const response = await getRequest(`${baseurl}/stories/${story_id}`);
         if (response.error) {
           console.error("Error in response", response);
           return;
         }
-        setEventData({
+        setstoryData({
           name: response.name,
           status: response.status,
         });
@@ -27,21 +27,21 @@ const UpdateStatus = ({ isOpen, onClose, event_id }) => {
       }
     };
 
-    if (event_id) {
-      fetchEvents();
+    if (story_id) {
+      fetchStory();
     }
-  }, [event_id]);
+  }, [story_id]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const payload = {
-        ...eventData,
+        ...storyData,
         username: user?.name || "unknown",
-        task: `User ${eventData.name} is ${eventData.status}`,
+        task: `User ${storyData.name} is ${storyData.status}`,
       };
       console.log(payload);
       const response = await updateRequest(
-        `${baseurl}/events/${event_id}`,
+        `${baseurl}/stories/${story_id}`,
         JSON.stringify(payload)
       );
       if (response.error) {
@@ -49,7 +49,7 @@ const UpdateStatus = ({ isOpen, onClose, event_id }) => {
         return;
       }
       onClose();
-      toast(`Event ${eventData.name} ${eventData.status}`);
+      toast(`Event ${storyData.name} ${storyData.status}`);
     } catch (error) {
       console.error("Error in updating event data", error);
     }
@@ -65,7 +65,7 @@ const UpdateStatus = ({ isOpen, onClose, event_id }) => {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-600 pb-4 mb-4">
           <h3 className="text-base font-semibold text-gray-900 dark:text-white">
-            Update Event <br /> {eventData.name} status
+            Update Story {storyData.name} status
           </h3>
           <button
             type="button"
@@ -101,9 +101,9 @@ const UpdateStatus = ({ isOpen, onClose, event_id }) => {
                   type="radio"
                   name="status"
                   value="active"
-                  checked={eventData.status === "active"}
+                  checked={storyData.status === "active"}
                   onChange={() =>
-                    setEventData((prevData) => ({
+                    setstoryData((prevData) => ({
                       ...prevData,
                       status: "active",
                     }))
@@ -118,9 +118,9 @@ const UpdateStatus = ({ isOpen, onClose, event_id }) => {
                   type="radio"
                   name="status"
                   value="disabled"
-                  checked={eventData.status === "disabled"}
+                  checked={storyData.status === "disabled"}
                   onChange={() =>
-                    setEventData((prevData) => ({
+                    setstoryData((prevData) => ({
                       ...prevData,
                       status: "disabled",
                     }))
@@ -146,7 +146,7 @@ const UpdateStatus = ({ isOpen, onClose, event_id }) => {
             </button>
           </div>
           <span className="text-xs text-red-400 font-medium">
-            Note: only active events are listed to public
+            Note: only active stories are listed to public
           </span>
         </form>
       </div>

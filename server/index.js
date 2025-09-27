@@ -26,6 +26,8 @@ app.use(cors());
 app.use("/api/v1/users", require("./routes/userRoutes"));
 app.use("/api/v1/userlog", require("./routes/userLogRoutes"));
 app.use("/api/v1/events", require("./routes/EventRoutes"));
+app.use("/api/v1/news", require("./routes/NewsRoutes"));
+app.use("/api/v1/stories", require("./routes/StoryRoute"));
 // handling errors here
 app.use(errorHandler);
 

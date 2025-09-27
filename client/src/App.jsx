@@ -31,6 +31,11 @@ import Profile from "./pages/admin/AdminProfile";
 import CreateEvent from "./components/admin/events/CreateEvent";
 import UpdateEvent from "./components/admin/events/UpdateEvent";
 import { ToastContainer } from "react-toastify";
+import AdminStories from "./pages/admin/AdminStories";
+import CreateStory from "./components/admin/story/CreateStory";
+import UpdateStory from "./components/admin/story/UpdateStory";
+import CreateNews from "./components/admin/news/CreateNews";
+import UpdateNews from "./components/admin/news/UpdateNews";
 const App = () => {
   const { isAuthenticated } = useAuth();
   return (
@@ -66,6 +71,11 @@ const App = () => {
             <Route path="users" element={<AdminUsers />} />
             <Route path="logs" element={<AdminUserlogs />} />
             <Route path="news" element={<AdminNews />} />
+            <Route path="news/create" element={<CreateNews />} />
+            <Route path="news/update/:id" element={<UpdateNews />} />
+            <Route path="stories" element={<AdminStories />} />
+            <Route path="stories/create" element={<CreateStory />} />
+            <Route path="stories/update/:id" element={<UpdateStory />} />
             <Route path="events" element={<AdminEvents />} />
             <Route path="events/create" element={<CreateEvent />} />
             <Route path="events/update/:id" element={<UpdateEvent />} />

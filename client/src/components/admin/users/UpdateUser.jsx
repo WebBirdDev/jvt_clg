@@ -101,7 +101,11 @@ const UpdateUser = ({ isOpen, onClose, userId }) => {
               }}
             />
           </div>
-          <div className="flex flex-col gap-5">
+          <div
+            className={`${
+              user.role === "super_admin" ? "flex flex-col gap-5" : ""
+            }`}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -122,26 +126,28 @@ const UpdateUser = ({ isOpen, onClose, userId }) => {
                 }}
               />
             </div>
-            <div>
-              <label
-                htmlFor="role"
-                className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Role
-              </label>
-              <select
-                value={userData.role}
-                onChange={(e) => {
-                  setUserData({ ...userData, role: e.target.value });
-                }}
-                className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-              >
-                <option>Select a user role</option>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="super_admin">Super admin</option>
-              </select>
-            </div>
+            {user.role === "super_admin" && (
+              <div>
+                <label
+                  htmlFor="role"
+                  className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Role
+                </label>
+                <select
+                  value={userData.role}
+                  onChange={(e) => {
+                    setUserData({ ...userData, role: e.target.value });
+                  }}
+                  className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                >
+                  <option>Select a user role</option>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                  <option value="super_admin">Super admin</option>
+                </select>
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-3">
             <label

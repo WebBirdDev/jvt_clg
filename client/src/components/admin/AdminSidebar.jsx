@@ -10,6 +10,7 @@ import { GoBell, GoBellFill } from "react-icons/go";
 import { HiMiniUsers, HiOutlineUsers } from "react-icons/hi2";
 import { RiAdminFill, RiAdminLine } from "react-icons/ri";
 import { RiUser3Fill, RiUser3Line } from "react-icons/ri";
+import { PiQuotesFill, PiQuotesLight } from "react-icons/pi";
 import useAuth from "../../context/useAuth";
 
 export const AdminSidebar = () => {
@@ -34,6 +35,12 @@ export const AdminSidebar = () => {
       path: "/admin/news",
       icon: <IoNewspaperOutline className="text-xl" />,
       active_icon: <IoNewspaper className="text-xl" />,
+    },
+    {
+      name: "Success Stories",
+      path: "/admin/stories",
+      icon: <PiQuotesLight className="text-xl" />,
+      active_icon: <PiQuotesFill className="text-xl" />,
     },
     {
       name: "Users",
@@ -69,7 +76,11 @@ export const AdminSidebar = () => {
           const isActive =
             location.pathname === path ||
             (path === "/admin/events" &&
-              location.pathname.startsWith("/admin/events"));
+              location.pathname.startsWith("/admin/events")) ||
+            (path === "/admin/stories" &&
+              location.pathname.startsWith("/admin/stories")) ||
+            (path === "/admin/news" &&
+              location.pathname.startsWith("/admin/news/"));
 
           return (
             <Link
@@ -84,9 +95,7 @@ export const AdminSidebar = () => {
                   isActive ? "bg-white text-primary rounded-r-xl" : ""
                 } hover:bg-white hover:text-primary transition-colors duration-500 hover:shadow py-3 px-2 rounded-xl `}
               >
-                <span className="">
-                  {location.pathname === path ? active_icon : icon}
-                </span>
+                <span className="">{isActive ? active_icon : icon}</span>
                 {name}
               </p>
             </Link>

@@ -8,8 +8,11 @@ import CreateUser from "../../components/admin/users/CreateUser";
 import UpdateUser from "../../components/admin/users/UpdateUser";
 import DeleteUser from "../../components/admin/users/DeleteUser";
 import UpdateStatus from "../../components/admin/users/UpdateStatus";
+import useAuth from "../../context/useAuth";
 
 const AdminUsers = () => {
+  const { user } = useAuth();
+  console.log(user);
   const [userDetails, setUserDetails] = useState([]);
   const [search, setSearch] = useState("");
   const [openCreateModal, setOpenCreateModal] = useState(false);
@@ -74,7 +77,17 @@ const AdminUsers = () => {
               className=" outline-none border-2 py-2 px-3 border-ternary rounded-md"
             />
           </div>
-          <button onClick={()=>setOpenCreateModal(true)} className="cursor-pointer text-whitey bg-admin px-5 py-3 rounded-xl">
+          <button
+            onClick={() => {
+              if (user.role === "super_admin" || user.role === "admin")
+                setOpenCreateModal(true);
+            }}
+            className={` ${
+              user.role === "super_admin" || user.role === "admin"
+                ? "text-whitey bg-admin cursor-pointer"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            } px-5 py-3 rounded-xl`}
+          >
             Create user
           </button>
         </div>
@@ -105,9 +118,9 @@ const AdminUsers = () => {
           </thead>
           <tbody className="">
             {filteredUsers.length > 0 ? (
-              filteredUsers.map((user, i) => (
+              filteredUsers.map((listedUsers, i) => (
                 <tr
-                  key={user._id}
+                  key={listedUsers._id}
                   className="hover:bg-ternary/40 border-b-1 border-black-two/10 hover:text-purple-900 cursor-pointer"
                 >
                   <td className="px-4 py-3">{i + 1}</td>
@@ -115,20 +128,26 @@ const AdminUsers = () => {
                     scope="row"
                     className="px-4 py-3 font-medium whitespace-nowrap dark:text-white"
                   >
-                    {user.username}
+                    {listedUsers.username}
                   </th>
-                  <td className="px-4 py-3">{user.email} </td>
+                  <td className="px-4 py-3">{listedUsers.email} </td>
                   <td className="px-4 py-3">
-                    {user.role === "super_admin" ? "super admin" : user.role}
+                    {listedUsers.role === "super_admin"
+                      ? "super admin"
+                      : listedUsers.role}
                   </td>
                   <td className="px-4 py-3">
                     <span
                       onClick={() => {
-                        setOpenStatusModal(true);
-                        setSelectedUserId(user._id);
+                        if (
+                          user.role === "super_admin" ||
+                          user.role === "admin"
+                        )
+                          setOpenStatusModal(true);
+                        setSelectedUserId(listedUsers._id);
                       }}
                       className={`mx-4 my-3 flex items-center gap-1 ${
-                        user.status === "active"
+                        listedUsers.status === "active"
                           ? "bg-green-300/50 text-green-600"
                           : user.status === "disabled"
                           ? "bg-red-300/50 text-red-600"
@@ -136,27 +155,51 @@ const AdminUsers = () => {
                       } w-fit pl-2 pr-4 py-1 rounded-full`}
                     >
                       <GoDotFill />
-                      {user.status}
+                      {listedUsers.status}
                     </span>
                   </td>
                   <td className="px-4 py-3 ">
                     <div className="flex w-fit gap-5">
                       <button
                         onClick={() => {
-                          setOpenUpdateModal(true);
-                          setSelectedUserId(user._id);
+                          if (
+                            user.role === "super_admin" ||
+                            user.role === "admin"
+                          ) {
+                            setOpenUpdateModal(true);
+                            setSelectedUserId(listedUsers._id);
+                          }
                         }}
-                        className="flex items-center gap-2 bg-yellow-300 px-3 py-1 text-black/50 hover:bg-yellow-500 transition-colors duration-300 ease-in cursor-pointer rounded-md"
+                        disabled={
+                          user.role !== "super_admin" && user.role !== "admin"
+                        }
+                        className={`flex items-center gap-2 px-3 py-1 rounded-md transition-colors duration-300 ease-in
+                        ${
+                          user.role !== "super_admin" && user.role !== "admin"
+                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            : "bg-yellow-300 text-black/50 hover:bg-yellow-500 cursor-pointer"
+                        }`}
                       >
                         <TbEdit />
                         Edit
                       </button>
+
                       <button
                         onClick={() => {
-                          setOpenDeleteModal(true);
-                          setSelectedUserId(user._id);
+                          if (
+                            user.role === "super_admin" ||
+                            user.role === "admin"
+                          ) {
+                            setOpenDeleteModal(true);
+                            setSelectedUserId(listedUsers._id);
+                          }
                         }}
-                        className="flex items-center gap-2 bg-red-500 px-3 py-1 text-whitey hover:bg-red-700 transition-colors duration-300 ease-in cursor-pointer rounded-md"
+                        className={`flex items-center gap-2 px-3 py-1 rounded-md transition-colors duration-300 ease-in
+                        ${
+                          user.role !== "super_admin" && user.role !== "admin"
+                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            : "bg-red-500 text-whitey hover:bg-red-600 cursor-pointer"
+                        }`}
                       >
                         <MdOutlineDeleteOutline />
                         Delete

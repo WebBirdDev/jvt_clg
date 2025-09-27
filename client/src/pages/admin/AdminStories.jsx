@@ -4,48 +4,48 @@ import { GoDotFill } from "react-icons/go";
 import { TbEdit } from "react-icons/tb";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { getRequest, baseurl, uploadurl } from "../../utils/service";
-import { formatDate } from "../../utils/dateFormatting";
-import UpdateStatus from "../../components/admin/news/UpdateStatus";
-import DeleteNews from "../../components/admin/news/DeleteNews";
+import UpdateStatus from "../../components/admin/story/UpdateStatus";
+import DeleteStory from "../../components/admin/story/DeleteStory";
 
-const AdminNews = () => {
-  const [newsData, setnewsData] = useState([]);
+const AdminStories = () => {
+  const [storyData, setStoryData] = useState([]);
   const [search, setSearch] = useState("");
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openStatusModal, setOpenStatusModal] = useState(false);
-  const [selectednewsId, setSelectednewsId] = useState("");
-  const getAllNews = async () => {
+  const [selectedStoryId, setSelectedStoryId] = useState("");
+
+  const getAllStories = async () => {
     try {
-      const response = await getRequest(`${baseurl}/news`);
+      const response = await getRequest(`${baseurl}/stories`);
       if (response.error) {
         console.log(response.error);
         return;
       }
-      setnewsData(response.news);
+      setStoryData(response.stories);
     } catch (error) {
       console.error("error in fetching stories details", error);
     }
   };
   useEffect(() => {
-    getAllNews();
+    getAllStories();
   }, []);
-  const filteredNews = newsData?.filter((news) => {
+  const filteredStories = storyData.filter((story) => {
     const query = search.toLowerCase();
-    return news.name.toLowerCase().includes(query);
+    return story.name.toLowerCase().includes(query);
   });
   const handleStatusUpdate = () => {
     setOpenStatusModal(false);
-    getAllNews();
+    getAllStories();
   };
 
   const handleDeleteModal = () => {
     setOpenDeleteModal(false);
-    getAllNews();
+    getAllStories();
   };
   return (
-     <main className="py-20 px-5">
+    <main className="py-20 px-5">
       <div className="flex items-center justify-between w-full">
-        <h1 className="text-primary font-semibold">News Details</h1>
+        <h1 className="text-primary font-semibold">Success stories</h1>
         <div className="flex items-center gap-5">
           <div>
             <input
@@ -56,10 +56,10 @@ const AdminNews = () => {
             />
           </div>
           <Link
-            to="/admin/news/create"
+            to="/admin/stories/create"
             className="text-whitey bg-admin px-5 py-3 rounded-xl"
           >
-            Create News
+            Create Story
           </Link>
         </div>
       </div>
@@ -71,14 +71,12 @@ const AdminNews = () => {
                 #
               </th>
               <th scope="col" className="px-4 py-3">
-                News Name
+                Student name
               </th>
               <th scope="col" className="px-4 py-3">
                 Image
               </th>
-              <th scope="col" className="px-4 py-3">
-                Date
-              </th>
+
               <th scope="col" className="px-4 py-3">
                 status
               </th>
@@ -89,10 +87,10 @@ const AdminNews = () => {
             </tr>
           </thead>
           <tbody className="">
-            {filteredNews?.length > 0 ? (
-              filteredNews?.map((news, i) => (
+            {filteredStories.length > 0 ? (
+              filteredStories.map((story, i) => (
                 <tr
-                  key={news._id}
+                  key={story._id}
                   className="hover:bg-ternary/40 border-b-1 border-black-two/10 hover:text-purple-900 cursor-pointer"
                 >
                   <td className="px-4 py-3">{i + 1}</td>
@@ -100,45 +98,42 @@ const AdminNews = () => {
                     scope="row"
                     className="px-4 py-3 font-medium whitespace-nowrap dark:text-white"
                   >
-                    {news.name}
+                    {story.name}
                   </th>
                   <td className="px-4 py-3">
                     <img
-                      src={`${uploadurl}/uploads/news/${news.img.replace(
+                      src={`${uploadurl}/uploads/success_story/${story.img.replace(
                         /\\/g,
                         "/"
                       )}`}
-                      alt={news.name}
-                      className="h-16 w-16 object-cover rounded-md"
+                      alt={story.name}
+                      className="h-16 w-16 object-cover rounded-full"
                     />
-                  </td>
-                  <td className="px-4 py-3">
-                    {formatDate(news.date)}
                   </td>
                   <td
                     onClick={() => {
                       setOpenStatusModal(true);
-                      setSelectednewsId(news._id);
+                      setSelectedStoryId(story._id);
                     }}
                     className="px-4 py-3"
                   >
                     <span
                       className={`mx-4 my-3 flex items-center gap-1 ${
-                        news.status === "active"
+                        story.status === "active"
                           ? "bg-green-300/50 text-green-600"
-                          : news.status === "disabled"
+                          : story.status === "disabled"
                           ? "bg-red-300/50 text-red-600"
                           : ""
                       } w-fit pl-2 pr-4 py-1 rounded-full`}
                     >
                       <GoDotFill />
-                      {news.status}
+                      {story.status}
                     </span>
                   </td>
                   <td className="px-4 py-3 ">
                     <div className="flex gap-5">
                       <Link
-                        to={`/admin/news/update/${news._id}`}
+                        to={`/admin/stories/update/${story._id}`}
                         className="flex items-center gap-2 bg-yellow-300 px-3 py-1 text-black/50 hover:bg-yellow-500 transition-colors duration-300 ease-in cursor-pointer rounded-md"
                       >
                         <TbEdit />
@@ -147,7 +142,7 @@ const AdminNews = () => {
                       <button
                         onClick={() => {
                           setOpenDeleteModal(true);
-                          setSelectednewsId(news._id);
+                          setSelectedStoryId(story._id);
                         }}
                         className="flex items-center gap-2 bg-red-500 px-3 py-1 text-whitey hover:bg-red-700 transition-colors duration-300 ease-in cursor-pointer rounded-md"
                       >
@@ -161,7 +156,7 @@ const AdminNews = () => {
             ) : (
               <tr>
                 <td colSpan={6} className="py-4 px-2 text-center">
-                  No News found
+                  No storys found
                 </td>
               </tr>
             )}
@@ -172,19 +167,19 @@ const AdminNews = () => {
         <UpdateStatus
           isOpen={openStatusModal}
           onClose={handleStatusUpdate}
-          news_id={selectednewsId}
+          story_id={selectedStoryId}
         />
       )}
 
       {openDeleteModal && (
-        <DeleteNews
+        <DeleteStory
           isOpen={openDeleteModal}
           onClose={handleDeleteModal}
-          news_id={selectednewsId}
+          story_id={selectedStoryId}
         />
       )}
     </main>
-  )
-}
+  );
+};
 
-export default AdminNews
+export default AdminStories;
