@@ -17,6 +17,7 @@ const CreateEvent = () => {
     img: null,
     date: "",
     time: "",
+    location: "",
   });
 
   const handleImageChange = (e) => {
@@ -39,6 +40,7 @@ const CreateEvent = () => {
     formData.append("description", eventData.description);
     formData.append("date", eventData.date);
     formData.append("time", eventData.time);
+    formData.append("location", eventData.location);
     if (eventData.img) {
       formData.append("img", eventData.img);
     }
@@ -55,7 +57,7 @@ const CreateEvent = () => {
     if (response.error) {
       console.log(response.message);
     } else {
-      toast('Event Created successfully');
+      toast("Event Created successfully");
       setEventData({
         name: "",
         description: "",
@@ -146,6 +148,20 @@ const CreateEvent = () => {
                 value={eventData.time}
                 onChange={(e) =>
                   setEventData({ ...eventData, time: e.target.value })
+                }
+              />
+            </div>
+            <div className="flex items-center gap-5">
+              <label className="block mb-1 w-40 text-sm font-medium text-gray-900 dark:text-white">
+                Event Location
+              </label>
+              <input
+                type="text"
+                className="w-full outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                required
+                value={eventData.location}
+                onChange={(e) =>
+                  setEventData({ ...eventData, location: e.target.value })
                 }
               />
             </div>

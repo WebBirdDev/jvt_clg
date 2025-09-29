@@ -26,6 +26,10 @@ const eventSchema = new Schema({
       "Please enter a valid time in HH:MM format",
     ],
   },
+  location:{
+    type:String,
+    required:[true, "Please enter event location"]
+  },
   status: {
     type: String,
     enum: ["active", "disabled"],

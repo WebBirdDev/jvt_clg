@@ -12,7 +12,8 @@ const createEvent = asyncHandler(async (req, res) => {
     !req.body.name ||
     !req.body.description ||
     !req.body.date ||
-    !req.body.time
+    !req.body.time ||
+    !req.body.location
   ) {
     res.status(400);
     throw new Error("Please enter required fields");
@@ -24,6 +25,7 @@ const createEvent = asyncHandler(async (req, res) => {
     event_date: req.body.date,
     event_time: req.body.time,
     img: req.file.filename,
+    location:req.body.location
   });
 
   const ipaddress = getClientIp(req);
@@ -72,6 +74,8 @@ const updateEvent = asyncHandler(async (req, res) => {
   event.event_time = req.body.time || event.event_time;
   event.event_date = req.body.date || event.event_date;
   event.status = req.body.status || event.status;
+  event.location = req.body.location || event.location;
+  event.updated_at = Date.now();
   if (req.file) {
     event.img = req.file.filename;
   }

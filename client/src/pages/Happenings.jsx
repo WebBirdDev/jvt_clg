@@ -4,10 +4,28 @@ import event_hero from "../assets/news/news_hero.png";
 import tag_1 from "../assets/events/tag_1.png";
 import tag_2 from "../assets/events/tag_2.png";
 import tag_3 from "../assets/events/tag_3.png";
-import { success_stories } from "../utils/content";
 import "../assets/css/card.css";
+import { useEffect, useState } from "react";
+import { getRequest, baseurl, uploadurl } from "../utils/service";
 
 const Happenings = () => {
+  const [stories, setStories] = useState([]);
+  const getAllStories = async () => {
+    try {
+      const response = await getRequest(`${baseurl}/stories`);
+      if (response.error) {
+        console.log(response.error);
+        return;
+      }
+      setStories(response.stories);
+    } catch (error) {
+      console.error("error in fetching stories details", error);
+    }
+  };
+
+  useEffect(() => {
+    getAllStories();
+  }, []);
   return (
     <main className="min-w-full">
       <motion.section
@@ -84,7 +102,7 @@ const Happenings = () => {
         </h1>
 
         <div className="py-20 flex items-center gap-20 justify-center flex-wrap">
-          {success_stories.map(({ quote, author, img }, i) => (
+          {stories.map(({ quote, author, img }, i) => (
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -96,7 +114,7 @@ const Happenings = () => {
               className="success-card"
             >
               <div className="content">
-                <img src={img} />
+                <img src={`${uploadurl}/uploads/success_story/${img}`} />
                 <p className="text-center text-sm">
                   {quote}
                   {author}

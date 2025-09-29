@@ -4,13 +4,29 @@ import news_hero from "../assets/news/news_hero.png";
 import tag_1 from "../assets/news/tag_1.png";
 import tag_2 from "../assets/news/tag_2.png";
 import tag_3 from "../assets/news/tag_3.png";
-import news_1 from "../assets/news/news_1.png";
-import news_2 from "../assets/news/news_2.png";
-import news_3 from "../assets/news/news_3.png";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { exclusive_news } from "../utils/content";
 import { Link } from "react-router-dom";
+import { getRequest, baseurl, uploadurl } from "../utils/service";
+import { useEffect, useState } from "react";
+import { formatDate } from "../utils/dateFormatting";
 const News = () => {
+  const [newsData, setnewsData] = useState([]);
+  const getAllNews = async () => {
+    try {
+      const response = await getRequest(`${baseurl}/news`);
+      if (response.error) {
+        console.log(response.error);
+        return;
+      }
+      setnewsData(response.news);
+    } catch (error) {
+      console.error("error in fetching stories details", error);
+    }
+  };
+  useEffect(() => {
+    getAllNews();
+  }, []);
   return (
     <main className="min-w-full">
       <motion.section
@@ -111,26 +127,26 @@ const News = () => {
         </h1>
         <div className="lg:px-44">
           <div className="flex lg:flex-row flex-col items-center py-10 gap-5">
-            {exclusive_news.map(({ name, img, content, date, id }, i) => (
+            {newsData.map(({ name, img, content, date, _id }, i) => (
               <Link
-                to={`./${id}`}
+                to={`./${_id}`}
                 key={i}
                 className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
               >
                 <img
-                  src={img}
+                  src={`${uploadurl}/uploads/news/${img}`}
                   className="group-hover:scale-[105%] duration-1000"
                 />
                 <p className="px-5 absolute lg:text-base text-[10px] text-whitey -mt-10 pb-5 group-hover:scale-95 duration-1000">
                   {name}
                 </p>
                 <p className="mt-3 text-black-two text-sm font-light">
-                  {content}
+                  {content.length>100 ? content.slice(0,100)+'...' : content}
                 </p>
                 <div className="flex w-ful lg:justify-between gap-y-2 lg:flex-row flex-col mb-5 mt-5">
                   <p className="flex gap-1 text-xs text-blacky font-light">
                     <IoCalendarClearOutline className="text-overlay" />
-                    {date}
+                    {formatDate(date)}
                   </p>
                 </div>
               </Link>

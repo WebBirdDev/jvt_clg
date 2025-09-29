@@ -67,6 +67,7 @@ const updateStory = asyncHandler(async (req, res) => {
   if (req.file) {
     story.img = req.file.filename;
   }
+  story.updated_at = Date.now();
   const updatedStory = await story.save();
   const ipaddress = getClientIp(req);
   const userlog = await userLog.create({

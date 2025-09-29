@@ -57,3 +57,9 @@ export const formatTimeTo12Hour = (time24) => {
 
   return `${hour}:${minute.toString().padStart(2, "0")} ${ampm}`;
 };
+
+export const normalizeDate = (date) => {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+};

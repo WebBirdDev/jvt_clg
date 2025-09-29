@@ -4,29 +4,54 @@ import event_hero from "../assets/events/event_hero.png";
 import tag_1 from "../assets/events/tag_1.png";
 import tag_2 from "../assets/events/tag_2.png";
 import tag_3 from "../assets/events/tag_3.png";
-import event_1 from "../assets/events/event_1.png";
-import event_2 from "../assets/events/event_2.png";
-import event_3 from "../assets/events/event_3.png";
 import { motion } from "framer-motion";
 import "react-calendar/dist/Calendar.css";
 import "../assets/css/calendar.css";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { past_events, upcoming_events } from "../utils/content";
+import { getRequest, baseurl, uploadurl } from "../utils/service";
+import { formatDate } from "../utils/dateFormatting";
 const Events = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [calendarViewDate, setCalendarViewDate] = useState(new Date());
+  const [eventsDetails, setEventDetails] = useState([]);
   const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
 
-  const selectedDateEvents = upcoming_events.filter((event) => {
+  const getAllEvents = async () => {
+    try {
+      const response = await getRequest(`${baseurl}/events`);
+      if (response.error) {
+        console.log(response.error);
+        return;
+      }
+      setEventDetails(response.events);
+    } catch (error) {
+      console.error("error in fetching events details", error);
+    }
+  };
+  useEffect(() => {
+    getAllEvents();
+  }, []);
+
+  // console.log(eventsDetails)
+
+  const pastEventsFiltered = eventsDetails.filter((event) => {
+    const eventDate = new Date(event.event_date);
+    return eventDate < today;
+  });
+
+  // console.log(pastEventsFiltered)
+
+  const selectedDateEvents = eventsDetails.filter((event) => {
     if (!selectedDate) return false;
 
-    const eventDate = new Date(event.date);
+    const eventDate = new Date(event.event_date);
+
     return (
       eventDate.getDate() === selectedDate.getDate() &&
       eventDate.getMonth() === selectedDate.getMonth() &&
@@ -34,17 +59,19 @@ const Events = () => {
     );
   });
 
-  const currentMonthEvents = upcoming_events.filter((event) => {
-    const eventDate = new Date(event.date);
+  const currentMonthEvents = eventsDetails.filter((event) => {
+    const eventDate = new Date(event.event_date);
     return (
       eventDate.getMonth() === currentMonth &&
-      eventDate.getFullYear() === currentYear
+      eventDate.getFullYear() === currentYear &&
+      eventDate >= today
     );
   });
 
   return (
     <main className="min-w-full">
-      <motion.section layout
+      <motion.section
+        layout
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
@@ -109,7 +136,7 @@ const Events = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
-          delay:0.4,
+          delay: 0.4,
           duration: 1.5,
           ease: "easeInOut",
         }}
@@ -153,8 +180,8 @@ const Events = () => {
             }}
             tileClassName={({ date, view }) => {
               if (view === "month") {
-                const isEventDay = upcoming_events.some((event) => {
-                  const eventDate = new Date(event.date);
+                const isEventDay = eventsDetails.some((event) => {
+                  const eventDate = new Date(event.event_date);
                   return (
                     eventDate.getDate() === date.getDate() &&
                     eventDate.getMonth() === date.getMonth() &&
@@ -184,15 +211,14 @@ const Events = () => {
             )}
 
             <div className="flex flex-col gap-5 mt-5">
-              {(selectedDate ? selectedDateEvents : currentMonthEvents).length >
-              0 ? (
-                (selectedDate ? selectedDateEvents : currentMonthEvents).map(
-                  ({ name, date, id }, i) => {
-                    const eventDate = new Date(date);
+              {selectedDate ? (
+                selectedDateEvents.length > 0 ? (
+                  selectedDateEvents.map(({ name, event_date, _id }, i) => {
+                    const eventDate = new Date(event_date);
                     const day = eventDate.getDate();
                     return (
                       <Link
-                        to={`./${id}`}
+                        to={eventDate < today ? `/past_events/${_id}` : `/events/${_id}`}
                         key={i}
                         className="bg-light-bg px-3 py-4 rounded-md flex items-center gap-3"
                       >
@@ -202,10 +228,33 @@ const Events = () => {
                         <p className="text-overlay font-medium">{name}</p>
                       </Link>
                     );
-                  }
+                  })
+                ) : (
+                  <p className="text-blacky font-light">
+                    No events on this date
+                  </p>
                 )
+              ) : currentMonthEvents.length > 0 ? (
+                currentMonthEvents.map(({ name, event_date, _id }, i) => {
+                  const eventDate = new Date(event_date);
+                  const day = eventDate.getDate();
+                  return (
+                    <Link
+                      to={`./${_id}`}
+                      key={i}
+                      className="bg-light-bg px-3 py-4 rounded-md flex items-center gap-3"
+                    >
+                      <div className="bg-ternary text-overlay rounded-md font-semibold px-3 py-1">
+                        {day}
+                      </div>
+                      <p className="text-overlay font-medium">{name}</p>
+                    </Link>
+                  );
+                })
               ) : (
-                <p className="text-blacky font-light">No events on this date</p>
+                <p className="text-blacky font-light">
+                  No upcoming events this month
+                </p>
               )}
             </div>
           </div>
@@ -233,36 +282,46 @@ const Events = () => {
           </Link>
         </div>
         <div className="flex lg:flex-row flex-col items-center py-10 gap-5">
-          {past_events
-            .slice(0, 3)
-            .map(({ id, name, img, content, date, location }, i) => (
-              <Link
-                to={`/past_events/${id}`}
-                key={i}
-                className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
-              >
-                <img
-                  src={img}
-                  className="group-hover:scale-[105%] duration-1000 brightness-50 group-hover:brightness-100"
-                />
-                <p className="px-5 absolute lg:text-base text-xs z-30 text-whitey -mt-10 mb-5 group-hover:scale-95 duration-1000 group-hover:backdrop-blur-xl">
-                  {name}
-                </p>
-                <p className="mt-3 text-black-two text-sm font-light">
-                  {content}
-                </p>
-                <div className="flex w-ful lg:justify-between flex-wrap gap-y-2 lg:flex-row flex-col mb-5 mt-5">
-                  <p className="flex gap-1 text-xs text-blacky font-light">
-                    <IoCalendarClearOutline className="text-overlay" />
-                    {date}
-                  </p>
-                  <p className="flex gap-1 text-xs text-blacky font-light">
-                    <FaLocationDot className="text-overlay" />
-                    {location}
-                  </p>
-                </div>
-              </Link>
-            ))}
+          {pastEventsFiltered.length > 0 ? (
+            pastEventsFiltered
+              .slice(0, 3)
+              .map(
+                ({ _id, name, img, description, event_date, location }, i) => (
+                  <Link
+                    to={`/past_events/${_id}`}
+                    key={i}
+                    className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
+                  >
+                    <img
+                      src={`${uploadurl}/uploads/events/${img}`}
+                      className="group-hover:scale-[105%] duration-1000 brightness-50 group-hover:brightness-100"
+                    />
+                    <p className="px-5 absolute lg:text-base text-xs z-30 text-whitey -mt-10 mb-5 group-hover:scale-95 duration-1000 group-hover:backdrop-blur-xl">
+                      {name}
+                    </p>
+                    <p className="mt-3 text-black-two text-sm font-light">
+                      {description.length > 20
+                        ? description.slice(0, 100) + "...."
+                        : description}
+                    </p>
+                    <div className="flex w-ful lg:justify-between flex-wrap gap-y-2 lg:flex-row flex-col mb-5 mt-5">
+                      <p className="flex gap-1 text-xs text-blacky font-light">
+                        <IoCalendarClearOutline className="text-overlay" />
+                        {formatDate(event_date)}
+                      </p>
+                      <p className="flex gap-1 text-xs text-blacky font-light">
+                        <FaLocationDot className="text-overlay" />
+                        {location}
+                      </p>
+                    </div>
+                  </Link>
+                )
+              )
+          ) : (
+            <div>
+              <p>No past events at the moment</p>
+            </div>
+          )}
         </div>
       </motion.section>
     </main>

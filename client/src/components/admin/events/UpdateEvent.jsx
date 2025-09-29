@@ -26,6 +26,7 @@ const UpdateEvent = () => {
     img: null,
     date: "",
     time: "",
+    location: "",
   });
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const UpdateEvent = () => {
           description: response.description,
           date: formatDateInput(response.event_date),
           time: response.event_time,
+          location:response.location
         });
         setPreviewImage(
           `${uploadurl}/uploads/events/${response.img.replace(/\\/g, "/")}`
@@ -72,6 +74,7 @@ const UpdateEvent = () => {
     formData.append("description", eventData.description);
     formData.append("date", eventData.date);
     formData.append("time", eventData.time);
+    formData.append("location", eventData.location);
     if (eventData.img) {
       formData.append("img", eventData.img);
     }
@@ -173,6 +176,20 @@ const UpdateEvent = () => {
                 value={eventData.time}
                 onChange={(e) =>
                   setEventData({ ...eventData, time: e.target.value })
+                }
+              />
+            </div>
+            <div className="flex items-center gap-5">
+              <label className="block mb-1 w-40 text-sm font-medium text-gray-900 dark:text-white">
+                Event Location
+              </label>
+              <input
+                type="text"
+                className="w-full outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                required
+                value={eventData.location}
+                onChange={(e) =>
+                  setEventData({ ...eventData, location: e.target.value })
                 }
               />
             </div>
