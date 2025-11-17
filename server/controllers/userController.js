@@ -5,7 +5,7 @@ const { EMAIL, PASSWORD } = require("../env.template");
 const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const getClientIp = require("../helpers/getClientIp");
-const UserLog = require("../models/userlogModel");
+const UserLog = require("../models/userLogModel");
 
 const createUser = asyncHandler(async (req, res) => {
   const { name, email, password, role, status } = req.body;
