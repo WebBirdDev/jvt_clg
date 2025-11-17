@@ -1,11 +1,21 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 const path = require("path");
 const connect_db = require("./config/dbConnect");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const cors = require("cors");
+
+// === Serve React frontend build ===
+const clientBuildPath = path.join(__dirname, "../client/dist");
+app.use(express.static(clientBuildPath));
+
+// IMPORTANT: This must come **before** your API routes to handle React Router paths
+app.get("*", (req, res) => {
+  res.sendFile(path.join(clientBuildPath, "index.html"));
+});
+
 app.get("/", (req, res) => res.send("Hello world"));
 
 app.use(express.json({ limit: "20mb" }));
