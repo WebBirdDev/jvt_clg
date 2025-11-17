@@ -7,12 +7,12 @@ const connect_db = require("./config/dbConnect");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const cors = require("cors");
 
-// === Serve React frontend build ===
+// Serve React frontend build
 const clientBuildPath = path.join(__dirname, "../client/dist");
 app.use(express.static(clientBuildPath));
 
-// IMPORTANT: This must come **before** your API routes to handle React Router paths
-app.get("*", (req, res) => {
+// Catch-all route for React Router
+app.get("/*", (req, res) => {
   res.sendFile(path.join(clientBuildPath, "index.html"));
 });
 
