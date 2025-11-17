@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const UserLogs = require("../models/userlogModel");
+const UserLogs = require("../models/userLogModel");
 const getClientIp = require("../helpers/getClientIp");
 
 const getAllUserLogs = asyncHandler(async (req, res) => {
