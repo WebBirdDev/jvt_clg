@@ -9,6 +9,7 @@ import hero_img_2 from "../assets/home/hero_img_2.png";
 import hero_img_3 from "../assets/home/hero_img_3.png";
 import Marquee from "./Marquee";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 const slides = [
   {
     title: "Shaping Futures, Building Leaders",
@@ -31,16 +32,40 @@ const slides = [
 ];
 
 const Hero = () => {
+  const [autoplay, setAutoPlay] = useState(true);
+  const swiperRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.stop();
+      swiperRef.current.mousewheel.disable();
+    }
+  };
+  const handleMouseLeave = () => {
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.start();
+      swiperRef.current.mousewheel.enable();
+    }
+  };
   return (
-    <section className="w-full h-screen bg-cover bg-center hero relative py-5 px-5">
+    <section
+      className="w-full h-screen bg-cover bg-center hero relative py-5 px-5"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <Marquee />
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         direction="vertical"
         modules={[Navigation, Pagination, Mousewheel, Autoplay]}
         pagination={{ clickable: true }}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
+         disableOnInteraction: false,
+          enabled: autoplay,
+        }}
+        mousewheel={{
+          forceToAxis: true,
         }}
         className="w-[90%] lg:h-[75%] h-full"
       >
