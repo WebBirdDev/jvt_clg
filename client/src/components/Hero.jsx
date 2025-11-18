@@ -36,15 +36,13 @@ const Hero = () => {
   const swiperRef = useRef(null);
 
   const handleMouseEnter = () => {
-    if (swiperRef.current) {
+    if (window.innerWidth >= 1024 && swiperRef.current) {
       swiperRef.current.autoplay.stop();
-      swiperRef.current.mousewheel.disable();
     }
   };
   const handleMouseLeave = () => {
-    if (swiperRef.current) {
+    if (window.innerWidth >= 1024 && swiperRef.current) {
       swiperRef.current.autoplay.start();
-      swiperRef.current.mousewheel.enable();
     }
   };
   return (
@@ -56,16 +54,23 @@ const Hero = () => {
       <Marquee />
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
-        direction="vertical"
         modules={[Navigation, Pagination, Mousewheel, Autoplay]}
         pagination={{ clickable: true }}
         autoplay={{
           delay: 2500,
-         disableOnInteraction: false,
-          enabled: autoplay,
+          disableOnInteraction: false,
         }}
-        mousewheel={{
-          forceToAxis: true,
+        breakpoints={{
+          0: {
+            direction: "horizontal",
+            mousewheel: false,
+          },
+          1024: {
+            direction: "vertical",
+            mousewheel: {
+              forceToAxis: true,
+            },
+          },
         }}
         className="w-[90%] lg:h-[75%] h-full"
       >
