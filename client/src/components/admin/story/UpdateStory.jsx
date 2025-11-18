@@ -79,11 +79,11 @@ const UpdateStory = () => {
       console.log(`${key}:`, value);
     }
 
-    const response = await updateRequest(`${baseurl}/stories/`, formData);
+    const response = await updateRequest(`${baseurl}/stories/${id}`, formData);
     if (response.error) {
       console.log(response.message);
     } else {
-      toast("Success story Created successfully");
+      toast("Success story Updated successfully");
       setStoryData({
         name: "",
         quote: "",
