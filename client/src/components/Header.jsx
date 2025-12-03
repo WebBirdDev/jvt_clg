@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo_sm.jpeg";
+import logo from "../assets/logo_cyan.png";
 import { IoChevronDownOutline, IoClose } from "react-icons/io5";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { useEffect, useState } from "react";
@@ -77,7 +77,7 @@ const Header = () => {
       </div>
       <div className="lg:px-20 px-10 lg:py-5 py-1 flex justify-between items-center text-primary">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} className="lg:w-18 w-14 lg:rounded-2xl rounded-xl" />
+          <img src={logo} className="lg:w-24 w-20 lg:rounded-2xl rounded-xl" />
 
           <h3 className="lg:text-md text-sm font-bold">SRI JVT Consultancy</h3>
         </Link>

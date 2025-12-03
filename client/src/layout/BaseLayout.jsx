@@ -18,7 +18,7 @@ const BaseLayout = () => {
   return (
     <main className="">
       <Header />
-      <div className="min-h-[100vh] lg:pt-44 lg:px-20">
+      <div className="min-h-[100vh] lg:pt-56 lg:px-20">
         <Outlet/>
       </div>
       <Footer />
