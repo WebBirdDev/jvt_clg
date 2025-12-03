@@ -9,4 +9,10 @@ export default defineConfig({
     port: 3000,
     open: "http://localhost:3000",
   },
+  //build 
+   build:{
+    sourcemap:false,
+    minify:"esbuild",
+    target:"es2020"
+  }
 });

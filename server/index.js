@@ -12,10 +12,10 @@ app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ extended: false }));
 
 // Serve uploads
-app.use("/uploads", express.static("server/uploads"));
-app.use("/uploads/events", express.static(path.join(__dirname, "uploads/events")));
-app.use("/uploads/news", express.static(path.join(__dirname, "uploads/news")));
-app.use("/uploads/success_story", express.static(path.join(__dirname, "uploads/success_story")));
+app.use("/uploads", express.static(path.join(__dirname,"uploads")));
+//app.use("/uploads/events", express.static(path.join(__dirname, "uploads/events")));
+//app.use("/uploads/news", express.static(path.join(__dirname, "uploads/news")));
+//app.use("/uploads/success_story", express.static(path.join(__dirname, "uploads/success_story")));
 
 // Serve API routes
 app.use("/api/v1/users", require("./routes/userRoutes"));
