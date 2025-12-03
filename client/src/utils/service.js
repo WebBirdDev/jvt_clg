@@ -1,5 +1,5 @@
-export const baseurl = "http://localhost:8080/api/v1";
-export const uploadurl = "http://localhost:8080";
+export const baseurl = "http://51.21.1.241/api/v1";
+export const uploadurl = "http://51.21.1.241";
 let message;
 
 // post request
