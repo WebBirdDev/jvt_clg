@@ -55,7 +55,7 @@ const Header = () => {
         : "drop-shadow-sm"
     } `}
     >
-      <div className="bg-primary lg:px-20 lg:py-5 py-2 px-10 text-whitey flex  flex-wrap lg:justify-between justify-center">
+      <div className="bg-[#00ffff] lg:px-20 lg:py-5 py-2 px-10 text-whitey flex  flex-wrap lg:justify-between justify-center">
         <div className="flex items-center gap-5 relative ">
           {submenu.map(({ id, name, path }) => (
             <Link
@@ -69,16 +69,17 @@ const Header = () => {
             </Link>
           ))}
         </div>
-        <div className="flex items-center gap-6 lg:text-md text-xs">
-          <a href="mailto:#">info@jvtclg.com</a>
-          <a href="tel:#">+94 123 456 7890</a>
+        <div className="flex flex-wrap justify-center items-center lg:gap-6 gap-x-5 lg:text-md text-xs">
+          <a href="mailto:info@srikvt.lk">info@srikvt.lk</a>
+          <a href="tel:+447427269151">+44 7427 269151</a>
+          <a href="tel:+94776516747">+94 77 651 6747</a>
         </div>
       </div>
       <div className="lg:px-20 px-10 lg:py-5 py-1 flex justify-between items-center text-primary">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} className="lg:w-18 w-14 lg:rounded-2xl rounded-xl" />
 
-          <h3 className="lg:text-md text-sm font-bold">SRI JVT College</h3>
+          <h3 className="lg:text-md text-sm font-bold">SRI JVT Consultancy</h3>
         </Link>
         <div className="items-center gap-10 text-base font-medium lg:flex hidden">
           {navlinks.map(({ id, name, path, submenu }) => {
