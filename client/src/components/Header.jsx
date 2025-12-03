@@ -55,7 +55,7 @@ const Header = () => {
         : "drop-shadow-sm"
     } `}
     >
-      <div className="bg-[#00ffff] lg:px-20 lg:py-5 py-2 px-10 text-whitey flex  flex-wrap lg:justify-between justify-center">
+      <div className="bg-[#00ffff] lg:px-20 lg:py-5 py-2 px-10 text-blue-900 flex  flex-wrap lg:justify-between justify-center">
         <div className="flex items-center gap-5 relative ">
           {submenu.map(({ id, name, path }) => (
             <Link
@@ -79,7 +79,7 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} className="lg:w-24 w-20 lg:rounded-2xl rounded-xl" />
 
-          <h3 className="lg:text-md text-sm font-bold">SRI JVT Consultancy</h3>
+          <h3 className="lg:text-3xl text-base font-bold">SRI JVT<br/>Consultancy</h3>
         </Link>
         <div className="items-center gap-10 text-base font-medium lg:flex hidden">
           {navlinks.map(({ id, name, path, submenu }) => {
