@@ -209,7 +209,7 @@ const About = () => {
           {mission}
         </p>
       </motion.section>
-      <motion.section
+      {/* <motion.section
         initial={{ y: 200, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{
@@ -310,7 +310,7 @@ const About = () => {
             </div>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
     </main>
   );
 };
