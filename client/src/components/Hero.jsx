@@ -12,21 +12,21 @@ import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 const slides = [
   {
-    title: "Global Mobility & Visa Consultancy",
+    title: "Global Mobility",
     subtitle: "SRI JVT Consultant Ltd",
-    desc: "Delivering strategic immigration and visa advisory services for individuals, families, and businesses seeking international education, employment, and residency opportunities.",
+    desc: "Expert guidance for studying, working, or settling abroad.",
     img: hero_img_1,
   },
   {
-    title: "Professional Immigration Advisory",
-    subtitle: "Trusted Consultancy Experts",
-    desc: "From eligibility assessment to final approval, we provide structured guidance, compliance checks, and end-to-end visa processing support.",
+    title: "Immigration Advisory",
+    subtitle: "Trusted Experts",
+    desc: "Structured visa support from eligibility to approval.",
     img: hero_img_2,
   },
   {
-    title: "Legal, Financial & Administrative Solutions",
-    subtitle: "Integrated Consultancy Services",
-    desc: "Comprehensive advisory services covering immigration, business licensing, financial coordination, and official documentation support.",
+    title: "Legal & Financial Support",
+    subtitle: "All-in-One Services",
+    desc: "Comprehensive support for visas, business, and documentation.",
     img: hero_img_3,
   },
 ];

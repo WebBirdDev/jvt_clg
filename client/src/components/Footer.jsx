@@ -26,11 +26,9 @@ const Footer = () => {
   ];
   const header_items = [
     { id: 1, name: "Home", path: "/" },
-    { id: 2, name: "The Institute", path: "/about" },
-    { id: 3, name: "Academic", path: "/academic" },
+    { id: 2, name: "About", path: "/about" },
+    { id: 3, name: "Destinations", path: "/countries" },
     { id: 4, name: "Services", path: "/services" },
-    { id: 5, name: "Career", path: "/career" },
-    { id: 6, name: "Happenings", path: "/happenings" },
   ];
 
   const visa_services = [

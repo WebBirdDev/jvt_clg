@@ -30,8 +30,8 @@ const Contact = () => {
     },
     {
       name: "Mail us",
-      content: "info@jvtclg.com",
-      link: "mailto:info@jvtclg.com",
+      content: "info@srikvt.lk",
+      link: "mailto:info@srikvt.lk",
       icon: <MdMail />,
     },
   ];

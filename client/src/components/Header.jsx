@@ -69,7 +69,7 @@ const Header = () => {
           ))}
         </div>
         <div className="flex flex-wrap justify-center items-center lg:gap-6 gap-x-5 lg:text-md text-xs">
-          <a href="mailto:info@srikvt.lk">info@srikvt.lk</a>
+          <a href="mailto:info@srikvt.lk">info@srijvt.lk</a>
           <a href="tel:+447427269151">Wimal: +44 7427 269151</a>
           <a href="tel:+94776516747">Sri: +94 77 651 6747</a>
         </div>
