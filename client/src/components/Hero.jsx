@@ -12,21 +12,21 @@ import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 const slides = [
   {
-    title: "Shaping Futures, Building Leaders",
-    subtitle: "SRI JVT College, Jaffna",
-    desc: "Delivering excellence in education and vocational training with a holistic approach to student growth and global opportunities",
+    title: "Global Mobility & Visa Consultancy",
+    subtitle: "SRI JVT Consultant Ltd",
+    desc: "Delivering strategic immigration and visa advisory services for individuals, families, and businesses seeking international education, employment, and residency opportunities.",
     img: hero_img_1,
   },
   {
-    title: "Empowering Skills for Tomorrow",
-    subtitle: "Hands-on Learning",
-    desc: "Our institute focuses on practical knowledge and real-world applications to prepare students for global opportunities.",
+    title: "Professional Immigration Advisory",
+    subtitle: "Trusted Consultancy Experts",
+    desc: "From eligibility assessment to final approval, we provide structured guidance, compliance checks, and end-to-end visa processing support.",
     img: hero_img_2,
   },
   {
-    title: "A Gateway to Global Success",
-    subtitle: "International Opportunities",
-    desc: "Providing pathways for higher education and careers worldwide with mentorship and guidance.",
+    title: "Legal, Financial & Administrative Solutions",
+    subtitle: "Integrated Consultancy Services",
+    desc: "Comprehensive advisory services covering immigration, business licensing, financial coordination, and official documentation support.",
     img: hero_img_3,
   },
 ];
@@ -55,7 +55,8 @@ const Hero = () => {
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         modules={[Navigation, Pagination, Mousewheel, Autoplay]}
-        pagination={{ clickable: true }}
+        // pagination={{ clickable: true }}
+        // autoplay={false}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -64,11 +65,15 @@ const Hero = () => {
           0: {
             direction: "horizontal",
             mousewheel: false,
+            pagination: false,
           },
           1024: {
             direction: "vertical",
             mousewheel: {
               forceToAxis: true,
+            },
+            pagination: {
+              clickable: true,
             },
           },
         }}
@@ -92,9 +97,15 @@ const Hero = () => {
                 <p className="lg:text-lg text-sm lg:w-[50%] w-full lg:text-left text-center">
                   {slide.desc}
                 </p>
-                <button className="system-btn">
-                  <Link to="/about">Explore our institute</Link>
-                </button>
+                <div className="flex flex-wrap gap-4 lg:justify-start justify-center">
+                  <Link to="/about">
+                    {" "}
+                    <button className="system-btn">Explore our services</button>
+                  </Link>
+                  <button className="border border-primary rounded-full px-5 py-[10px] hover:bg-white hover:text-primary hover:border-whitey hover:shadow-2xl transition-all duration-300">
+                    <Link to="/contact">Book a Consultation</Link>
+                  </button>
+                </div>
               </div>
 
               {/* Image Section */}

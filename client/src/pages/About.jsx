@@ -4,13 +4,32 @@ import circle from "../assets/about/circle.png";
 import tag_1 from "../assets/about/tag_1.png";
 import tag_2 from "../assets/about/tag_2.png";
 import tag_3 from "../assets/about/tag_3.png";
-import clg from "../assets/about/about_clg.png";
+import clg from "../assets/about/about_office.png";
 import { motion } from "framer-motion";
 import { mission, vision } from "../utils/content";
+import chairperson from "../assets/about/chairman.png";
 import avatar from "../assets/about/avatar.jpg";
 import avatar_1 from "../assets/about/avatar_1.jpg";
 import avatar_2 from "../assets/about/avatar_2.jpg";
+import { FaStar } from "react-icons/fa";
 const About = () => {
+  const strength = [
+    {
+      item: "Expert guidance for travel, study, work, and permanent residency visas",
+    },
+    {
+      item: "Structured, step-by-step consultation and application support",
+    },
+    {
+      item: "Transparent and ethical processes with clear communication",
+    },
+    {
+      item: "Up-to-date knowledge of global immigration regulations",
+    },
+    {
+      item: "Smooth, efficient, and stress-free visa experience",
+    },
+  ];
   const academic_team = [
     {
       name: "John Doe",
@@ -60,12 +79,13 @@ const About = () => {
           <div className="flex lg:flex-row flex-col lg:justify-between justify-center items-center">
             <div className="lg:px-28 lg:text-left">
               <h1 className="font-bold lg:text-4xl text-xl leading-snug">
-                A Legacy of Learning, <br />A Vision for Tomorrow
+                Turning Global Dreams <br />
+                into Reality
               </h1>
               <p className="lg:w-[85%] w-full py-5 lg:text-xl text-sm">
-                With a commitment to excellence in academics and vocational
-                training, we nurture confident individuals who lead with
-                innovation, responsibility, and purpose.
+                We provide expert visa and immigration guidance with a
+                transparent, structured approach, helping you travel, study,
+                work, and settle abroad with confidence and ease.
               </p>
             </div>
             <div className="w-full h-full relative overflow-hidden">
@@ -128,37 +148,35 @@ const About = () => {
         className="w-full lg:px-20 px-5 py-10"
       >
         <h1 className="vertical-tag text-4xl text-overlay font-bold">
-          Overview
+          Who we are
         </h1>
         <div className="flex lg:flex-row flex-col-reverse">
           <div className="pt-10 flex flex-col gap-y-5 text-blacky lg:text-lg lg:leading-loose lg:w-[90%] w-full">
             <p className="">
-              <span className="text-overlay font-medium"> SRI JVT College</span>{" "}
-              is a leading institution in Jaffna dedicated to providing quality
-              education and vocational training that meets global standards.
-              Established with the vision of shaping futures, we offer a wide
-              range of academic and professional programs designed to prepare
-              students for higher studies, successful careers, and personal
-              growth.
+              <span className="text-overlay font-medium">
+                {" "}
+                SRIJVT Consultancy
+              </span>{" "}
+              is a professional visa and immigration advisory firm dedicated to
+              delivering reliable, transparent, and result-oriented guidance for
+              global mobility.
+              <br />
+              We assist individuals and families in achieving their
+              international goals through a structured and client-focused
+              approach, ensuring clarity and confidence at every stage of the
+              visa process.
             </p>
-            <p className="">
-              Our approach goes beyond textbooks - we focus on holistic
-              development, nurturing not just knowledge but also critical
-              thinking, creativity, leadership, and values that prepare students
-              to thrive in a rapidly changing world.
-            </p>
-            <p className="">
-              With modern teaching methods, dedicated faculty, and a supportive
-              learning environment,{" "}
-              <span className="text-overlay font-medium"> SRI JVT College</span>{" "}
-              has become a trusted pathway for students seeking opportunities
-              both locally and internationally.
-            </p>
-            <p>
-              We are more than a place of learning; we are a community that
-              celebrates success, encourages innovations, and inspires every
-              student to achieve their fullest potential
-            </p>
+            <div className="flex flex-col gap-2 lg:pl-10">
+              {strength.map(({ item }, index) => (
+                <span
+                  key={index}
+                  className="lg:text-base text-sm flex gap-1 lg:items-center"
+                >
+                  <FaStar className="text-secondary lg:text-base text-xl" />
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
           <img src={clg} className="lg:max-w-[90%] lg-pt-0 pt-10" />
         </div>
@@ -220,7 +238,7 @@ const About = () => {
             </p>
           </div>
           <img
-            src={avatar_1}
+            src={chairperson}
             className="max-w-[472px] chairman-img rounded-md"
           />
         </div>

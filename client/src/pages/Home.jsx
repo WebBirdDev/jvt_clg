@@ -1,69 +1,63 @@
 /* eslint-disable no-unused-vars */
 import Hero from "../components/Hero";
-import clg from "../assets/home/institute.jpg";
-import academic from "../assets/academic/academic.jpg";
-import career from "../assets/career/career.png";
+import office from "../assets/home/office.png";
+import academic from "../assets/home/home_real_1.png";
+import career from "../assets/home/career.png";
 import { BsStars } from "react-icons/bs";
 import { mission, upcoming_events, vision } from "../utils/content";
-import arrow from "../assets/arrows.png";
 import brand from "../assets/logo.jpeg";
 import story_1 from "../assets/career/story_1.png";
 import story_2 from "../assets/career/story_2.png";
 import story_3 from "../assets/career/story_3.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCalendarClearOutline } from "react-icons/io5";
+import { MdFlightTakeoff } from "react-icons/md";
+import { FaPassport } from "react-icons/fa";
+import { LuTicketsPlane } from "react-icons/lu";
+
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
 const Home = () => {
   const about_li = [
-    { list: "Modern teaching methods" },
-    { list: "Career-oriented programs" },
-    { list: "International exposure" },
-    { list: "Student-centred learning" },
-  ];
-  const stats = [
-    { num: "1,000", content: "Undergraduate Students" },
-    { num: "2,500", content: "Postgraduate Students" },
-    { num: "100", content: "Faculty" },
-    { num: "600", content: "Staff" },
+    { list: "Student Visas" },
+    { list: "Work Visas" },
+    { list: "Visit Visas" },
+    { list: "Documentation Guidance" },
   ];
   const academic_li = [
-    { list: "Diplomas & Certificates - Professional & vocational programs" },
-    { list: "IT & Business studies - Industry-relevant courses" },
-    { list: "Language training - English & other foreign languages" },
-    { list: "Skill development - Practical training for employability" },
-  ];
-  const faculties = [
-    { name: "Faculty of", course: "Business & Management" },
-    { name: "Faculty of", course: "Information Technology & Computing" },
-    { name: "Faculty of", course: "Arts & Humanities" },
-    { name: "Faculty of", course: "Science & Technology" },
-    { name: "Faculty of", course: "Health & Social Care" },
+    { list: "High approval success rate" },
+    { list: "Transparent documentation process" },
+    { list: "Personalized case handling" },
+    { list: "After-visa support for travel and accommodation" },
+    { list: "Affordable pricing with installment options" },
   ];
   const feature_services = [
     {
-      heading: "Immigration & Visa Guidance",
+      heading: "Visa Services",
       content:
-        "We provide expert support for student, work, and visit visas, helping you navigate every step of the immigration process with confidence",
+        "We provide fast and reliable support for visit, student, and work visas. Our team ensures smooth processing for tourist and business visas, end-to-end guidance from university selection to student visa approvals, and expert advice for skilled, semi-skilled, and seasonal work visa categories.",
+      icon: <MdFlightTakeoff />,
     },
     {
-      heading: "Legal & Financial Services",
+      heading: "Immigration / PR",
       content:
-        "Access reliable legal and financial support, including business licenses, mortgages, and professional accountancy services to manage your affairs smoothly",
+        "Professional assistance for permanent residency and long-term immigration pathways, including eligibility assessment and documentation support.",
+      icon: <FaPassport />,
     },
     {
-      heading: "Administrative & Special Services",
+      heading: "Countries We Cover",
       content:
-        "From essential Sri Lankan documents and land registration to event planning and the advice board, we offer practical solutions tailored to your needs.",
+        "Canada, UK, Australia, Europe (Schengen), Dubai, Poland, New Zealand, and many more global destinations.",
+      icon: <LuTicketsPlane />,
     },
   ];
   const career_li = [
     { list: "Internship & job placements" },
     { list: "Career guidance workshops" },
     { list: "Pathways to higher education abroad" },
-    { list: "Alumni success network" },
+    { list: "Part-time work support" },
   ];
-
   const success_stories = [
     { name: "Inspiring Journeys", img: story_1 },
     { name: "Rising Stars", img: story_2 },
@@ -72,7 +66,7 @@ const Home = () => {
 
   return (
     <main className="min-w-full">
-      <section className="bg-light-bg rounded-md h-full lg:my-5 mt-32 mx-2">
+      <section className="bg-light-bg rounded-md h-fit lg:my-5 mt-32 mx-2">
         <Hero />
       </section>
       <motion.section
@@ -85,20 +79,20 @@ const Home = () => {
         className="w-full h-full py-20 lg:px-52 px-5 flex lg:flex-row gap-10 flex-col items-center justify-center "
       >
         <div className="w-full">
-          <img src={clg} className="rounded-md" />
+          <img src={office} className="rounded-md" />
         </div>
         <div className="w-full flex flex-col gap-2 ">
           <span className="tag mb-5 lg:text-2xl text-lg font-semibold text-overlay ">
             About
           </span>
           <h1 className="text-blacky font-semibold lg:text-2xl text-lg">
-            Welcome to SRI JVT College - Jaffna, Sri Lanka
+            Your Trusted Partner for Global Visa Solutions
           </h1>
           <p className="text-black-two mt-3 lg:text-md text-sm">
-            SRI JVT College is dedicated to delivering excellence in education
-            and vocational training with a strong focus on holistic student
-            development. We empower young minds with knowledge, skills, and
-            global opportunities to thrive in today's competitive world
+            SRIJVT Consultancy provides professional and transparent visa
+            support for individuals and families planning to study, work,
+            travel, or settle abroad. Start your journey today with expert
+            guidance and guaranteed clarity at every step.
           </p>
           <ul className="lg:pl-8 lg:text-base">
             {about_li.map(({ list }, i) => (
@@ -111,42 +105,9 @@ const Home = () => {
               </li>
             ))}
           </ul>
-          <button className="system-btn">
-            <Link to="/about">My SRI JVT</Link>
+          <button className="system-btn mt-5">
+            <Link to="/contact">Book a Consultation</Link>
           </button>
-        </div>
-      </motion.section>
-      <motion.section
-        initial={{ y: 200, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="w-full mb-10 text-whitey"
-      >
-        <div className="lg:mx-32">
-          <div className="stats px-10 lg:py-20 py-10">
-            <span className="text-2xl tag mb-5 font-semibold  relative z-10 ">
-              SRI JVT College by the Numbers
-            </span>
-            <motion.div
-              initial={{ y: 200, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.9,
-                ease: "easeInOut",
-              }}
-              className="relative z-10 w-full grid lg:grid-cols-4 grid-cols-2 gap-10 lg:py-20 py-10"
-            >
-              {stats.map(({ num, content }, i) => (
-                <div key={i} className="">
-                  <p className="lg:text-5xl font-extrabold">{num}</p>
-                  <p>{content}</p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
         </div>
       </motion.section>
       <motion.section
@@ -162,35 +123,14 @@ const Home = () => {
           <h4 className="uppercase font-bold text-2xl border-b-2 w-full">
             Vision
           </h4>
-          <p className="text-sm font-light my-10">{vision}</p>
+          <p className="lg:text-lg text-sm font-light my-10">{vision}</p>
         </div>
         <div className="bg-overlay p-5 rounded-md lg:w-[550px] lg:h-[250px]">
           <h4 className="uppercase font-bold text-2xl border-b-2 w-full">
             mission
           </h4>
-          <p className="text-sm font-light my-10">{mission}</p>
+          <p className="lg:text-lg text-sm font-light my-10">{mission}</p>
         </div>
-      </motion.section>
-      <motion.section
-        initial={{ y: 200, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="lg:px-44 px-10"
-      >
-        <Link to="/academic">
-          <div className="flex lg:justify-between py-5 bg-primary items-center justify-start rounded-md px-10 gap-5">
-            <div>
-              <h1 className="text-secondary font-bold">Student Enrollement</h1>
-              <p className="text-whitey">Academic Year 2025/2026</p>
-            </div>
-            <div>
-              <img src={arrow} />
-            </div>
-          </div>
-        </Link>
       </motion.section>
       <motion.section
         initial={{ y: 200, opacity: 0 }}
@@ -206,10 +146,10 @@ const Home = () => {
             <img src={brand} className="rounded-md" />
           </div>
           <p className="lg:text-lg text-sm text-black-two lg:py-20 lg:text-left text-center px-5 py-5">
-            At SRI JVT College, we believe in shaping futures through excellence
-            in education, skills, and opportunities. With world-class academics
-            and global pathways, we empower students to learn, grow, and succeed
-            - beyond borders
+            At SRI JVT Consultancy, we believe in shaping futures through
+            excellence in education, skills, and opportunities. With world-class
+            academics and global pathways, we empower students to learn, grow,
+            and succeed - beyond borders
           </p>
         </div>
       </motion.section>
@@ -224,16 +164,11 @@ const Home = () => {
       >
         <div className="w-full flex flex-col gap-2 ">
           <span className="tag mb-5 lg:text-2xl text-lg font-semibold text-overlay ">
-            Academic
+            Expertise
           </span>
           <h1 className="text-blacky font-semibold lg:text-2xl text-lg">
-            Academic Programs That Build Futures
+            Why Choose SRIJVT Consultancy
           </h1>
-          <p className="text-black-two mt-3 lg:text-md text-sm">
-            Our wide range of academic and vocational courses are designed to
-            meet industry demands while opening doors to higher education
-            worldwide.
-          </p>
           <ul className="lg:pl-8 lg:text-base">
             {academic_li.map(({ list }, i) => (
               <li
@@ -246,7 +181,7 @@ const Home = () => {
             ))}
           </ul>
           <button className="system-btn my-5">
-            <Link to="/academic">Explore the courses</Link>
+            <Link to="/services">See What We provide</Link>
           </button>
         </div>
         <div className="w-full">
@@ -260,56 +195,34 @@ const Home = () => {
           duration: 1,
           ease: "easeInOut",
         }}
-        className="w-full h-full py-20 lg:px-20 px-5 "
-      >
-        <div className="grid lg:grid-cols-5 gap-5 md:grid-cols-3 grid-col-2 bg-shade rounded-md py-10 px-10">
-          {faculties.map(({ name, course }, i) => (
-            <div key={i} className="flex items-center flex-col gap-5">
-              <div className="bg-ternary w-50 h-50 rounded-full"></div>
-              <p className="text-center text-sm text-black-two">
-                {name}
-                <br />
-                {course}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.section>
-      <motion.section
-        initial={{ y: 200, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-        }}
         className="bg-light-bg rounded-md text-blacky h-full lg:my-5 lg:mt-32 mx-2 flex flex-col items-center justify-center p-5 lg:py-20 lg:px-32 gap-5"
       >
         <h1 className="text-xl font-semibold text-center">
-          More Than a College - A Complete Support System
+          Complete Visa & Immigration Support Under One Roof
         </h1>
         <p className="text-center lg:px-32 lg:text-base text-sm">
-          Through SRI JVT Consultant Ltd, we provide students and families with
-          a comprehensive range of reliable services designed to make education,
-          travel, and legal processes smooth and hassle-free. Our expertise
-          covers immigration and visa guidance, legal and financial services
-          such as business licenses, mortgages, and accountancy support, as well
-          as administrative assistance for essential documents like passports,
-          driving license, and land registrations. Whether you are pursing
-          education abroad, planning your career, or managing official paperwork
-          at home, our dedicated team ensures professional, accurate, and timely
-          support at every step
+          SRI JVT Consultant Ltd offers professional and transparent visa and
+          immigration services to individuals and families planning to travel,
+          study, work, or settle abroad. From short-term visits to permanent
+          residency pathways, our experienced team ensures accurate guidance and
+          smooth processing at every stage.
         </p>
         <div className="flex justify-center items-center lg:w-[80%] py-10 w-full lg:flex-row flex-col lg:gap-0 gap-y-10">
-          {feature_services.map(({ heading, content }, i) => (
+          {feature_services.map(({ heading, content, icon }, i) => (
             <div
               key={i}
               className="cursor-pointer lg:w-80 h-96 bg-whitey transition-all duration-700 ease-in-out shadow-xl p-5 rounded-md m-auto overflow-hidden relative group z-0"
             >
-              <div className="circle absolute h-28 w-28 -bottom-[3.5em] -right-[2.5em] rounded-full bg-primary group-hover:scale-[2000%] duration-1000 z-[-1] op" />
-              <h3 className="z-20 font-semibold text-[16px] py-10 group-hover:text-whitey">
-                {heading}
-              </h3>
-              <p className=" group-hover:text-whitey">{content}</p>
+              <div className="circle absolute h-28 w-28 -bottom-[3.5em] -right-[2.5em] rounded-full bg-primary group-hover:scale-[2000%] duration-1000 z-[-1]" />
+              <div className="flex items-center justify-between">
+                <h3 className="z-20 font-semibold text-[16px] py-10 group-hover:text-whitey">
+                  {heading}
+                </h3>
+                <span className="lg:text-6xl text-base text-primary group-hover:text-whitey">{icon}</span>
+              </div>
+              <p className=" group-hover:text-whitey lg:text-base text-sm">
+                {content}
+              </p>
             </div>
           ))}
         </div>
@@ -377,15 +290,15 @@ const Home = () => {
       >
         <div className="box-container flex flex-col py-20 my-10 lg:px-52 px-5">
           <span className="tag mb-5 lg:text-2xl text-lg font-semibold text-overlay ">
-            Happenings
+            Testimonials
           </span>
           <h1 className="text-blacky font-semibold lg:text-2xl text-lg py-10">
-            Campus Life & Success Stories
+            What Our Clients Say
           </h1>
           <p className="text-black-two lg:w-[45%] pb-5">
-            Stay updated with the latest events, students achievements, alumni
-            journeys, and college news. We celebrate success together and
-            inspire future generations
+            Hear directly from students and clients who trusted us with their
+            visa, immigration, and study abroad journeys. We take pride in
+            providing professional, reliable, and transparent services.
           </p>
           <h3 className="text-blacky font-semibold lg:text-2xl text-lg py-10">
             Success Stories
@@ -437,7 +350,6 @@ const Home = () => {
                     key={i}
                     className="bg-whitey lg:h-[400px] lg:w-[400px] border-overlay/30 border-1 shadow-xl hover:shadow-2xl p-5 cursor-pointer rounded-md group transition-all duration-700 ease-in-out"
                   >
-                    
                     <img
                       src={img}
                       className="group-hover:scale-[105%] duration-1000 brightness-50 group-hover:brightness-100"

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo_cyan.png";
 import { IoChevronDownOutline, IoClose } from "react-icons/io5";
@@ -23,19 +24,19 @@ const Header = () => {
   }, []);
   const navlinks = [
     { id: 1, name: "Home", path: "/" },
-    { id: 2, name: "The Institute", path: "/about" },
-    { id: 3, name: "Academic", path: "/academic" },
-    { id: 4, name: "Services", path: "/services" },
-    { id: 5, name: "Career", path: "/career" },
+    { id: 2, name: "About us", path: "/about" },
     {
-      id: 6,
-      name: "Happenings",
-      path: "/happenings",
-      submenu: [
-        { name: "Events", path: "/events" },
-        { name: "News", path: "/news" },
-      ],
+      id: 3,
+      name: "Services",
+      path: "/services",
+      // submenu: [
+      //   { name: "Visit Visa", path: "/visit_visa" },
+      //   { name: "student Visa", path: "/student_visa" },
+      //   { name: "Work Visa", path: "/workv_visa" },
+      // ],
     },
+    { id: 4, name: "Countries", path: "/countries" },
+    { id: 5, name: "Student Hub", path: "/student_hub" },
   ];
   const submenu = [
     { id: 1, name: "News", path: "/news" },
@@ -49,11 +50,10 @@ const Header = () => {
   return (
     <header
       className={`rounded-b-3xl fixed top-0 min-w-full z-50 bg-white transition-all duration-500 ease-in-out
-    transform ${
-      scrolled
-        ? "drop-shadow-md backdrop-blur-2xl border-none"
-        : "drop-shadow-sm"
-    } `}
+    transform ${scrolled
+          ? "drop-shadow-md backdrop-blur-2xl border-none"
+          : "drop-shadow-sm"
+        } `}
     >
       <div className="bg-[#00ffff] lg:px-20 lg:py-5 py-2 px-10 text-blue-900 flex  flex-wrap lg:justify-between justify-center">
         <div className="flex items-center gap-5 relative ">
@@ -61,9 +61,8 @@ const Header = () => {
             <Link
               key={id}
               to={path}
-              className={`lg:text-md text-xs relative underline-animation ${
-                location.pathname === path ? "border-b-2 border-whitey" : ""
-              }`}
+              className={`lg:text-md text-xs relative underline-animation ${location.pathname === path ? "border-b-2 border-whitey" : ""
+                }`}
             >
               {name}
             </Link>
@@ -71,33 +70,39 @@ const Header = () => {
         </div>
         <div className="flex flex-wrap justify-center items-center lg:gap-6 gap-x-5 lg:text-md text-xs">
           <a href="mailto:info@srikvt.lk">info@srikvt.lk</a>
-          <a href="tel:+447427269151">+44 7427 269151</a>
-          <a href="tel:+94776516747">+94 77 651 6747</a>
+          <a href="tel:+447427269151">Wimal: +44 7427 269151</a>
+          <a href="tel:+94776516747">Sri: +94 77 651 6747</a>
         </div>
       </div>
       <div className="lg:px-20 px-10 lg:py-5 py-1 flex justify-between items-center text-primary">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} className="lg:w-24 w-20 lg:rounded-2xl rounded-xl" />
 
-          <h3 className="lg:text-3xl text-base font-bold">SRI JVT<br/>Consultancy</h3>
+          <h3 className="lg:text-3xl text-base font-bold">
+            SRI JVT
+            <br />
+            Consultancy
+          </h3>
         </Link>
         <div className="items-center gap-10 text-base font-medium lg:flex hidden">
           {navlinks.map(({ id, name, path, submenu }) => {
             let active =
-              name === "Happenings" &&
-              (currentPath === "/news" ||
-                currentPath === "/events" ||
-                currentPath.startsWith("/past_events") ||
-                currentPath.startsWith("/news"));
+              (name === "Happenings" &&
+                (currentPath === "/news" ||
+                  currentPath === "/events" ||
+                  currentPath.startsWith("/past_events") ||
+                  currentPath.startsWith("/news"))) ||
+              (name === "Countries" &&
+                currentPath.startsWith("/countries"));
             return (
               <div key={id} className="group relative">
                 <Link
                   to={path}
-                  className={`relative underline-animation flex items-center gap-1 ${
-                    location.pathname === path || active
+                  className={`relative underline-animation flex items-center gap-1 ${location.pathname === path ||
+                      location.pathname.startsWith(path + "/")
                       ? "border-b-4 border-primary"
                       : ""
-                  }`}
+                    }`}
                 >
                   {name}
                   {submenu && (
@@ -127,15 +132,17 @@ const Header = () => {
               </div>
             );
           })}
+          <Link to={"contact"} className="system-btn">
+            Book appointment
+          </Link>
         </div>
         <FaBarsStaggered
           className="lg:hidden text-2xl cursor-pointer"
           onClick={() => setMenuOpen(true)}
         />
         <div
-          className={`fixed lg:hidden top-0 right-0 min-h-[100vh] w-full max-w-full bg-overlay/60 z-50 transform transition-transform duration-500 ease-in-out ${
-            menuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed lg:hidden top-0 right-0 min-h-[100vh] w-full max-w-full bg-overlay/60 z-50 transform transition-transform duration-500 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="w-3/4 min-h-[100vh] bg-overlay transition-transform duration-700 fixed right-0">
             <div className="flex justify-end items-center p-5 px-10">
@@ -155,17 +162,15 @@ const Header = () => {
                       >
                         {name}
                         <IoChevronDownOutline
-                          className={`mt-1 transform transition-transform duration-500 ease-in-out ${
-                            submenuOpen ? "rotate-180" : "rotate-0"
-                          }`}
+                          className={`mt-1 transform transition-transform duration-500 ease-in-out ${submenuOpen ? "rotate-180" : "rotate-0"
+                            }`}
                         />
                       </button>
                       <ul
-                        className={`overflow-hidden bg-ternary text-center rounded-md transition-all duration-1000 ease-in-out flex flex-col gap-3 ${
-                          submenuOpen
-                            ? "max-h-40 opacity-100 my-5 py-2 mb-0"
-                            : "max-h-0 opacity-0"
-                        }`}
+                        className={`overflow-hidden bg-ternary text-center rounded-md transition-all duration-1000 ease-in-out flex flex-col gap-3 ${submenuOpen
+                          ? "max-h-40 opacity-100 my-5 py-2 mb-0"
+                          : "max-h-0 opacity-0"
+                          }`}
                       >
                         {submenu.map((item, index) => (
                           <div key={index} className="px-5 py-3">

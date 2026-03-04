@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 *.txt
 *.env
+
+
+# backup files
+sample.jsx
+test.jsx

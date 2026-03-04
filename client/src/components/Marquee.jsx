@@ -5,7 +5,7 @@ const Marquee = () => {
     name: "New Batch Opening !",
   }));
   return (
-    <div className="marquee-wrapper backdrop-blur-sm border-[1px] border-ternary">
+    <div className="marquee-wrapper backdrop-blur-sm border-[1px] border-ternary pointer-events-none select-none">
       <div className="label">Announcements</div>
       <div className="marquee">
         <div className="marquee-content text-overlay">

@@ -1,3 +1,4 @@
+import "./App.css";
 import ScrollToTop from "./components/ScrollToTop";
 import { Navigate, Route, Routes } from "react-router-dom";
 import BaseLayout from "./layout/BaseLayout";
@@ -10,7 +11,9 @@ import Happenings from "./pages/Happenings";
 import News from "./pages/News";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
-import "./App.css";
+import StudentHub from "./pages/StudentHub";
+
+
 import PastEvents from "./pages/PastEvents";
 import Sitemap from "./pages/Sitemap";
 import TermsConditions from "./pages/TermsConditions";
@@ -36,6 +39,9 @@ import CreateStory from "./components/admin/story/CreateStory";
 import UpdateStory from "./components/admin/story/UpdateStory";
 import CreateNews from "./components/admin/news/CreateNews";
 import UpdateNews from "./components/admin/news/UpdateNews";
+import Countries from "./pages/Countries";
+import CountryDetail from "./pages/CountruDetail";
+
 const App = () => {
   const { isAuthenticated } = useAuth();
   return (
@@ -48,6 +54,9 @@ const App = () => {
           <Route path="/academic" element={<Academic />} />
           <Route path="/services" element={<Services />} />
           <Route path="/career" element={<Career />} />
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/countries/:countrySlug" element={<CountryDetail />} />
+          <Route path="/student_hub" element={<StudentHub />} />
           <Route path="/happenings" element={<Happenings />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<SingleNews />} />

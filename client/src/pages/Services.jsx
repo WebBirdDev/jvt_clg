@@ -11,82 +11,86 @@ import { BsStars } from "react-icons/bs";
 const Services = () => {
   const expertise = [
     {
-      name: "Immigration & Visa Guidance",
-      desc: "We provide trusted guidance to help individuals and families navigate internationals pathways with confidence. From education to work opportunities, our support covers the entire process, including document preparation and submission.",
+      name: "Immigration & Global Mobility Consultancy",
+      desc: "We provide end-to-end immigration consultancy services for individuals, families, and businesses seeking international opportunities. Our structured advisory approach ensures compliance, accuracy, and strategic planning throughout the entire application lifecycle.",
       list: [
         {
-          tag: "Student Pathways",
-          item: "Guidance for those seeking higher education aboard.",
+          tag: "Student Visa Advisory",
+          item: "Strategic guidance for international education pathways.",
         },
         {
-          tag: "Work Permits",
-          item: "Helping professionals secure employment opportunities",
+          tag: "Skilled Migration & Work Permits",
+          item: "Professional assistance for employment-based migration.",
         },
         {
-          tag: "Spouse Pathways",
-          item: "Support for family reunification and dependent visas",
+          tag: "Dependent & Family Visas",
+          item: "Support for spouse and family reunification applications.",
         },
         {
-          tag: "Visit Approvals",
-          item: "Smooth handling of visitor applications for travel",
+          tag: "Visitor & Short-Term Entry Visas",
+          item: "Consultation and documentation handling for travel purposes.",
         },
         {
-          tag: "Graduate Route",
-          item: "Assistance for students completing studies and extending their stay",
+          tag: "Graduate & Post-Study Routes",
+          item: "Advisory support for extending stay after academic completion.",
         },
         {
-          tag: "Visa Processing",
-          item: "Full support with paperwork, VFS submissions,  and official requirements.",
+          tag: "End-to-End Visa Processing",
+          item: "Documentation review, compliance checks, and VFS coordination.",
         },
       ],
       img: visa,
     },
     {
-      name: "Legal & Finance Advisory",
-      desc: "We provide complete assistance in managing legal and financial requirements for individuals and businesses, ensuring compliance and security.",
+      name: "Legal & Financial Advisory Services",
+      desc: "We offer consultancy support in regulatory compliance, financial structuring, and legal coordination for individuals and business entities. Our advisory framework ensures clarity, transparency, and risk mitigation.",
       list: [
         {
-          tag: "Sponsor Licenses",
-          item: "Skilled worker sponsorships and employer registrations",
+          tag: "Sponsor Licensing & Compliance",
+          item: "Guidance for employer registrations and sponsorship approvals.",
         },
         {
-          tag: "Business Licenses",
-          item: "Legal setup and approvals for enterprises",
+          tag: "Business Registration & Licensing",
+          item: "Structured setup and regulatory approvals for enterprises.",
         },
         {
-          tag: "Mortgages",
-          item: "Personal and commercial mortgage arrangements",
+          tag: "Mortgage & Property Financing",
+          item: "Advisory services for residential and commercial financing.",
         },
         {
-          tag: "Bank Loans",
-          item: "Securing personal or business loans with the right guidance",
+          tag: "Personal & Business Loans",
+          item: "Consultation on securing appropriate funding solutions.",
         },
         {
-          tag: "Immigration Solicitor Referrals",
-          item: "Linking clients with trusted legal professionals",
+          tag: "Legal Referrals",
+          item: "Coordination with certified immigration and corporate solicitors.",
         },
         {
-          tag: "Accounting & Bookkeeping",
-          item: "Financial management for individuals and organizations",
+          tag: "Accounting & Financial Structuring",
+          item: "Bookkeeping, tax advisory coordination, and compliance planning.",
         },
       ],
       img: finance,
     },
     {
-      name: "Administrative Assistance",
-      desc: "We simplify the process of handling important officials documents in Sri Lanka, ensuring everything is processed efficiently and accurately.",
+      name: "Administrative & Government Documentation Support",
+      desc: "We streamline complex administrative procedures by providing professional assistance in handling official documentation within Sri Lanka and for international requirements.",
       list: [
         {
           tag: "Passport Applications & Renewals",
+          item: "Structured documentation and submission coordination.",
         },
         {
-          tag: "Driving & Motor License Handling",
+          tag: "Driving & Motor License Processing",
+          item: "End-to-end support for licensing requirements.",
         },
         {
-          tag: "Land & Property Registrations",
+          tag: "Land & Property Documentation",
+          item: "Assistance with registrations and related legal paperwork.",
         },
         {
-          tag: "Other Official Documents",
+          tag: "Certified Document Processing",
+          item: "Handling attestations, translations, and official submissions.",
         },
       ],
       img: admin,
@@ -105,18 +109,7 @@ const Services = () => {
       >
         <div className="w-full h-full bg-cover bg-center box-container-transparent pt-5 px-5">
           <div className="flex lg:flex-row flex-col-reverse lg:justify-between justify-center items-center">
-            <div className="lg:px-28 lg:text-left">
-              <h1 className="font-bold lg:text-4xl text-xl leading-snug">
-                Guiding You, <br />
-                Beyond Education
-              </h1>
-              <p className="lg:w-[85%] w-full py-5 lg:text-xl text-sm">
-                Through SRI JVT Consultant Ltd, we provide trusted solutions in
-                immigration, legal, financial, and administrative matters,
-                helping students and families achieve their goals with
-                confidence
-              </p>
-            </div>
+
             <div className="w-full h-full relative overflow-hidden">
               <div className="flex flex-col justify-end items-end relative">
                 <img src={hero_img} className="z-10" />
@@ -139,7 +132,7 @@ const Services = () => {
                     ease: "easeInOut",
                   }}
                   src={tag_2}
-                  className="z-20 absolute lg:right-95 lg:bottom-60 bottom-12 -right-15 lg:w-[45%] w-[60%]"
+                  className="z-20 absolute lg:right-80 lg:bottom-60 bottom-12 -right-15 lg:w-[45%] w-[60%]"
                 />
                 <motion.img
                   animate={{ y: [0, -10, 0] }}
@@ -152,6 +145,15 @@ const Services = () => {
                   className="z-20 absolute lg:right-20 lg:-bottom-20 bottom-16 right-30 lg:w-fit w-[60%]"
                 />
               </div>
+            </div>
+            <div className="lg:px-28 lg:text-left">
+              <h1 className="font-bold lg:text-4xl text-xl leading-snug">
+                Strategic Guidance, <br />
+                Global Opportunities
+              </h1>
+              <p className="lg:w-[85%] w-full py-5 lg:text-xl text-sm">
+                Expert consultancy in immigration, legal, finance, and administration — guiding you forward with confidence.
+              </p>
             </div>
           </div>
         </div>
@@ -170,12 +172,10 @@ const Services = () => {
         </h1>
         <div className="lg:px-10 text-blacky mt-5 lg:text-xl text-sm leading-relaxed font-light">
           <p className="">
-            At SRI JVT College Ltd, we believe support doesn't end with
-            education. We extend our expertise to offer reliable guidance and
-            practical solutions for individuals, students, and families. Whether
-            it's navigating international pathways, handling legal or financial
-            matters, or managing important documentation, we stand beside you
-            every step of the way.
+            Whether you are an individual seeking international mobility,
+            a family managing documentation, or a business navigating
+            compliance and licensing requirements, we offer reliable,
+            results-driven advisory support at every stage.
           </p>
           <p className="mt-6">
             Our goal is to make complex processes simpler, smoother, and
@@ -206,11 +206,10 @@ const Services = () => {
                 duration: 1.5,
                 ease: "easeInOut",
               }}
-              className={`flex ${
-                i % 2 == 1
-                  ? "lg:flex-row-reverse flex-col-reverse"
-                  : "lg:flex-row flex-col"
-              } mb-20 lg:gap-20 gap-10 justify-between `}
+              className={`flex ${i % 2 == 1
+                ? "lg:flex-row-reverse flex-col-reverse"
+                : "lg:flex-row flex-col"
+                } mb-20 lg:gap-20 gap-10 justify-between `}
             >
               <div className="lg:py-0 ">
                 <h3 className="text-overlay font-semibold">{name}</h3>

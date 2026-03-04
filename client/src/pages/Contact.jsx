@@ -22,15 +22,17 @@ const Contact = () => {
     },
     {
       name: "Call us",
-      content: "+94 123 456 7890",
-      link: "tel:+941234567890",
-      icon: <MdMail />,
+      content: "Wimal: 00447427269151",
+      content_2: "Sri: +94 77 651 6747",
+      link: "tel:+00447427269151",
+      link_2: "tel:+94776516747",
+      icon: <PiPhoneCallFill />,
     },
     {
       name: "Mail us",
       content: "info@jvtclg.com",
       link: "mailto:info@jvtclg.com",
-      icon: <PiPhoneCallFill />,
+      icon: <MdMail />,
     },
   ];
   return (
@@ -133,7 +135,7 @@ const Contact = () => {
         }}
         className="flex lg:flex-row flex-col items-center justify-center gap-10 lg:px-44 lg:py-20 py-10 px-5"
       >
-        {contact_details.map(({ name, content, icon, link }, i) => (
+        {contact_details.map(({ name, content, content_2, icon, link, link_2 }, i) => (
           <div
             key={i}
             className="text-blacky lg:w-[350px] w-72 h-64 drop-shadow-2xl bg-whitey border-t-8 border-secondary rounded-xl px-10 py-10 flex items-center flex-col justify-center gap-5"
@@ -145,6 +147,11 @@ const Contact = () => {
             <a href={link} target="_blank" className="lg:w-[85%] text-center">
               {content}
             </a>
+            {content_2 && link_2 ? (<>
+              <a href={link_2} target="_blank" className="lg:w-[85%] text-center">
+                {content_2}
+              </a>
+            </>) : ''}
           </div>
         ))}
       </motion.div>
